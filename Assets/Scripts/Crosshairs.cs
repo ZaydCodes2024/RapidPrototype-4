@@ -3,17 +3,17 @@ using UnityEngine;
 public class Crosshairs : MonoBehaviour
 {   
     [Header("Camera")]
-    public Camera playerCamera;
+    [SerializeField] Camera playerCamera;
     [Header("Main Crosshair")]
-    public Texture2D normalCrosshair;
-    public float normalScale = 1f;
+    [SerializeField] Texture2D normalCrosshair;
+    [SerializeField] float normalScale = 1f;
     [Space]
     [Header("Interactable Crosshair")]
-    public Texture2D interactableCrosshair; 
-    public float interactableScale = 1.5f;
+    [SerializeField] Texture2D interactableCrosshair; 
+    [SerializeField] float interactableScale = 1.5f;
     [Space]
     [Header("Interactable Crosshair Triggers")]
-    public LayerMask interactableLayerMask; 
+    [SerializeField] LayerMask interactableLayerMask; 
 
     private GUIStyle crosshairStyle = new GUIStyle();
     private bool showInteractableCrosshair = false;
@@ -36,6 +36,16 @@ public class Crosshairs : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 4f, interactableLayerMask))
         {
             showInteractableCrosshair = true;
+            Interactable interactable = hit.collider.GetComponent<Interactable>();
+
+            if (Input.GetButtonDown("Interact"))
+            {
+                if (interactable != null)
+                {
+                    interactable.Interact(); // Calls the item's interaction behavior
+                }
+            }
+            
         }
         else
         {

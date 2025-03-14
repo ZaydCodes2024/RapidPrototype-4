@@ -4,7 +4,7 @@ using System;
 public class PuzzleModule : MonoBehaviour
 {
     public event Action OnSolved;
-    private bool isSolved = false;
+    public bool isSolved = false;
 
     public virtual void Solve()
     {

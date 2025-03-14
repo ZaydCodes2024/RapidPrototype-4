@@ -32,6 +32,8 @@ public class ButtonSequencePuzzle : PuzzleModule
     }
     public void PressButton(int buttonID)
     {   
+        if (isSolved || index >= correctSequence.Length) return;
+        
         if (buttonID == correctSequence[index])
         {
             index++;

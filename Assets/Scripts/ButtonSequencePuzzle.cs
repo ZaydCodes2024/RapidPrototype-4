@@ -4,8 +4,6 @@ public class ButtonSequencePuzzle : PuzzleModule
 {
     [SerializeField] GameObject[] buttons;
     [SerializeField] int[] correctSequence = { 1, 3, 2 , 4};
-    
-    [SerializeField] PuzzleBox puzzleBox;
     public Color highlightColor = Color.green; // Color when hovered
     public Color defaultColor = Color.white; // Default button color
     int index = 0;
@@ -33,7 +31,7 @@ public class ButtonSequencePuzzle : PuzzleModule
     public void PressButton(int buttonID)
     {   
         if (isSolved || index >= correctSequence.Length) return;
-        
+
         if (buttonID == correctSequence[index])
         {
             index++;

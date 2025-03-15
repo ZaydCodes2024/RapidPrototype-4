@@ -1,6 +1,4 @@
 using UnityEngine;
-
-[System.Serializable]
 public class Interactable : MonoBehaviour
 {
     public string itemName = "Default Item";  // Name of the object

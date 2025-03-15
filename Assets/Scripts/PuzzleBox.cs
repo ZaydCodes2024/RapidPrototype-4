@@ -20,7 +20,7 @@ public class PuzzleBox : MonoBehaviour
 
         if (solvedPuzzles >= puzzles.Length)
         {
-            Debug.Log("Puzzle Box Unlocked!");
+            GameManager.Instance.CompleteGame();
             // Add logic to open box or trigger completion
         }
     }

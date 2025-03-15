@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    public static InventoryManager instance; // Singleton for easy access
+    public static InventoryManager instance;
     private List<GameObject> inventory = new List<GameObject>();
 
     void Awake()
@@ -22,9 +22,16 @@ public class InventoryManager : MonoBehaviour
             Debug.Log("Item added: " + item.name);
         }
     }
-
-    public void ShowInventory()
+    public bool HasItem(GameObject itemName)
     {
-        Debug.Log("Inventory: " + string.Join(", ", inventory.ConvertAll(i => i.name)));
+        return inventory.Contains(itemName);
+    }
+    public void RemoveItem(GameObject itemName)
+    {
+        if (inventory.Contains(itemName))
+        {
+            inventory.Remove(itemName);
+            Debug.Log("Item removed: " + itemName);
+        }
     }
 }

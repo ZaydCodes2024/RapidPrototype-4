@@ -22,15 +22,21 @@ public class CircuitSequencePuzzle : PuzzleModule
     }
 
     public void CorrectMove()
-    {
-        correctedPieces++;
-
-        Debug.Log($"Correct Move! {correctedPieces}/{totalPieces}");
-
-        if (correctedPieces == totalPieces)
+    {   
+        if (correctedPieces < totalPieces)
         {
-            Debug.Log("Circuit Connected!");
-            Solve();
+            correctedPieces++;
+            Debug.Log($"Correct Move! {correctedPieces}/{totalPieces}");
+
+            if (correctedPieces == totalPieces)
+            {
+                Debug.Log("Circuit Connected!");
+                Solve();
+            }
+        }
+        else
+        {
+          Debug.Log("All pieces are placed correctly");
         }
     }
 }

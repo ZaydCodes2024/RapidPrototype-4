@@ -21,7 +21,6 @@ public class PuzzleBox : MonoBehaviour
         if (solvedPuzzles >= puzzles.Length)
         {
             GameManager.Instance.CompleteGame();
-            // Add logic to open box or trigger completion
         }
     }
 }

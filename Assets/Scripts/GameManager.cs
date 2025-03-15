@@ -12,6 +12,5 @@ public class GameManager : MonoBehaviour
     public void CompleteGame()
     {
         Debug.Log("Game Over!");
-        // Add game completion logic here (e.g., open the chest, show UI)
     }
 }

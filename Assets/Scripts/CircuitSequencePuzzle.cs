@@ -1,26 +1,36 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CircuitSequencePuzzle : PuzzleModule
 {
+    public GameObject circuitHolder;
     private CircuitPiece[] circuitPieces;
 
-    void Start()
+    private int totalPieces = 0;
+    private int correctedPieces = 0;
+
+    private void Start()
     {
-        circuitPieces = FindObjectsOfType<CircuitPiece>();
+        totalPieces = circuitHolder.transform.childCount;
+
+        circuitPieces = new CircuitPiece[totalPieces];
+
+        for (int i = 0; i < totalPieces; i++)
+        {
+            circuitPieces[i] = circuitHolder.transform.GetChild(i).GetComponent<CircuitPiece>();
+        }
     }
 
-    public void CheckCircuitCompletion()
+    public void CorrectMove()
     {
-        foreach (CircuitPiece piece in circuitPieces)
-        {
-            if (!piece.IsConnected())
-            {
-                Debug.Log("Circuit is not completed");
-                return;
-            }
-        }
+        correctedPieces++;
 
-        Debug.Log("Circuit is Powered!");
-        Solve();
+        Debug.Log($"Correct Move! {correctedPieces}/{totalPieces}");
+
+        if (correctedPieces == totalPieces)
+        {
+            Debug.Log("Circuit Connected!");
+            Solve();
+        }
     }
 }

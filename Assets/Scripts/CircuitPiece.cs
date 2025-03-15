@@ -36,6 +36,7 @@ public class CircuitPiece : MonoBehaviour
     float[] rotations = { 0, 90, 180, 270 };
     public float[] correctRotation;
     private bool isPlaced = false;
+    private bool canRotate = true;
     private int possibleRotations;
 
     private CircuitSequencePuzzle circuitPuzzle;
@@ -50,14 +51,15 @@ public class CircuitPiece : MonoBehaviour
         possibleRotations = correctRotation.Length;
         int rand = Random.Range(0, rotations.Length);
         transform.eulerAngles = new Vector3(0, 0, rotations[rand]);
-
-        CheckPlacement();
     }
 
     private void OnMouseDown()
     {
-        transform.Rotate(new Vector3(0, 0, 90));
-        CheckPlacement();
+        if (canRotate)
+        {
+            transform.Rotate(new Vector3(0, 0, 90));
+            CheckPlacement();
+        }
     }
 
     private void CheckPlacement()
@@ -77,10 +79,12 @@ public class CircuitPiece : MonoBehaviour
         {
             isPlaced = true;
             circuitPuzzle.CorrectMove();
+            canRotate = false;
         }
         else if (!correct && isPlaced)
         {
             isPlaced = false;
+            canRotate = true;
         }
     }
 }

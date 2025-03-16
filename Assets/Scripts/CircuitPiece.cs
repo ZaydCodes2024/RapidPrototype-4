@@ -1,90 +1,40 @@
-// using UnityEngine;
-
-// public class CircuitPiece : MonoBehaviour
-// {
-//     public bool isPowered;
-//     private int currentrotationIndex = 0;
-//     public Vector3[] rotationAngles = {Vector3.zero, new Vector3(0,0,90),new Vector3(0,0,180),new Vector3(0,0,270)};
-//     private CircuitSequencePuzzle puzzle;
-
-//     void Start()
-//     {
-//         puzzle = FindObjectOfType<CircuitSequencePuzzle>();
-//     }
-
-//     void OnMouseDown()
-//     {
-//         RotatePiece();
-//         puzzle.CheckCircuitCompletion();
-//     }
-//     void RotatePiece()
-//     {
-//         int nextrotationIndex = (currentrotationIndex + 1) % rotationAngles.Length;
-//         Vector3 rotationDifference = rotationAngles[nextrotationIndex] - rotationAngles[currentrotationIndex];
-//         transform.Rotate(rotationDifference);
-//         currentrotationIndex = nextrotationIndex;
-//     }
-//     public bool IsConnected()
-//     {
-//         return isPowered = true;
-//     }
-// }
 using UnityEngine;
-
 public class CircuitPiece : MonoBehaviour
 {
-    float[] rotations = { 0, 90, 180, 270 };
-    public float[] correctRotation;
+    // A reference to the target position in the circuit (where the piece should be placed)
+    public Transform correctPosition; // Set this in the inspector to where the piece should be placed in the puzzle.
+    public GameObject circuitPiecePrefab;
     private bool isPlaced = false;
-    private bool canRotate = true;
-    private int possibleRotations;
-
+    private bool canPlace = false;
     private CircuitSequencePuzzle circuitPuzzle;
-
     private void Awake()
     {
         circuitPuzzle = FindObjectOfType<CircuitSequencePuzzle>();
     }
-
     private void Start()
     {
-        possibleRotations = correctRotation.Length;
-        int rand = Random.Range(0, rotations.Length);
-        transform.eulerAngles = new Vector3(0, 0, rotations[rand]);
-    }
-
-    private void OnMouseDown()
-    {
-        if (canRotate)
+        // Ensure the piece starts in the correct position
+        if (correctPosition != null)
         {
-            transform.Rotate(new Vector3(0, 0, 90));
-            CheckPlacement();
+            transform.position = correctPosition.transform.position;
+            transform.rotation = correctPosition.transform.rotation; // Optional: you can set the correct rotation here if needed.
         }
     }
 
-    private void CheckPlacement()
+    // Snaps the piece to the correct position on the circuit
+    public void SnapToCorrectPosition()
     {
-        bool correct = false;
+        if (correctPosition != null && InventoryManager.instance.HasItem(circuitPiecePrefab))
+        {   
+            Debug.Log("Snapping piece to the correct position");
+            transform.position = correctPosition.transform.position; // Move piece to the correct spot
+            transform.rotation = correctPosition.transform.rotation; // Align to the correct rotation
 
-        foreach (float correctRot in correctRotation)
-        {
-            if (Mathf.Approximately(transform.eulerAngles.z, correctRot))
-            {
-                correct = true;
-                break;
-            }
-        }
-
-        if (correct && !isPlaced)
-        {
-            isPlaced = true;
-            circuitPuzzle.CorrectMove();
-            canRotate = false;
-        }
-        else if (!correct && isPlaced)
-        {
-            isPlaced = false;
-            canRotate = true;
+            isPlaced = true; // Mark it as placed
+            InventoryManager.instance.RemoveItem(circuitPiecePrefab); // Remove from inventory after placing
+            circuitPuzzle.CorrectMove();  // Notify puzzle that the move is correct
+            canPlace = false;
+            this.enabled = false; // Disable this script to prevent further interaction with the piece
         }
     }
 }

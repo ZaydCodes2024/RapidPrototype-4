@@ -19,6 +19,19 @@ public class Crosshairs : MonoBehaviour
     private bool showInteractableCrosshair = false;
     private RaycastHit hit;
 
+    public static Crosshairs instance;
+     void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+    }
+
+    public void ShowInteractableCrosshair(bool show)
+    {
+        showInteractableCrosshair = show;
+    }
     void OnGUI()
     {
         crosshairStyle.normal.background = showInteractableCrosshair ? interactableCrosshair : normalCrosshair;
@@ -37,10 +50,25 @@ public class Crosshairs : MonoBehaviour
         {
             showInteractableCrosshair = true;
             Interactable interactable = hit.collider.GetComponent<Interactable>();
+            CircuitPiece circuitPiece = hit.collider.GetComponent<CircuitPiece>();
 
-            if (Input.GetButtonDown("Interact"))
+
+            // If the circuit piece is being hovered over
+            if (circuitPiece != null && InventoryManager.instance.HasItem(circuitPiece.circuitPiecePrefab))
             {
-                if (interactable != null)
+                // Change the crosshair to show it's an appropriate placement
+                showInteractableCrosshair = true;
+
+                // If interact button is pressed, place the circuit piece in the correct spot
+                if (Input.GetButtonDown("Interact"))
+                {
+                    circuitPiece.SnapToCorrectPosition(); // Call the PlacePiece function of CircuitPiece
+                }
+            }
+            else if (interactable != null)
+            {
+                // For any other interactable item, use the normal interaction
+                if (Input.GetButtonDown("Interact"))
                 {
                     interactable.Interact(); // Calls the item's interaction behavior
                 }

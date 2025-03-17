@@ -43,6 +43,7 @@ public class Crosshairs : MonoBehaviour
             Interactable interactable = hit.collider.GetComponent<Interactable>();
             Inspectable inspectable = hit.collider.GetComponent<Inspectable>();
             CircuitPiece circuitPiece = hit.collider.GetComponent<CircuitPiece>();
+            Switches switches = hit.collider.GetComponent<Switches>();
 
             // If the circuit piece is being hovered over
             if (circuitPiece != null && InventoryManager.instance.HasItem(circuitPiece.circuitPiecePrefab))
@@ -77,10 +78,17 @@ public class Crosshairs : MonoBehaviour
                 {
                     inspectable.HandleInspectionRotation();
                 }
-                
+
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     inspectable.StopInspect();
+                }
+            }
+            else if (switches != null)
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    switches.ToggleState();
                 }
             }
         }

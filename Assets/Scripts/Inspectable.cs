@@ -19,7 +19,7 @@ public class Inspectable : MonoBehaviour
         originalRotation = currentObject.transform.rotation;
 
         currentObject.transform.position = inspectPoint.position;
-        currentObject.transform.rotation = inspectPoint.rotation;  // Or another rotation if needed
+        currentObject.transform.rotation = inspectPoint.rotation; 
         isInspecting = true;
     }
 

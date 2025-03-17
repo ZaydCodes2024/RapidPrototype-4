@@ -1,5 +1,6 @@
 using UnityEngine;
-
+using TMPro;
+using System.Linq;
 public class SwitchSequencePuzzle : PuzzleModule
 {
     [Header("Switches")]
@@ -8,6 +9,7 @@ public class SwitchSequencePuzzle : PuzzleModule
     private bool puzzleSolved = false;
     [SerializeField] GameObject indicatorLight;
     [SerializeField] Material solvedMaterial;
+    [SerializeField] TextMeshPro solutionText;
     private MeshRenderer indicatorRenderer;
 
     private void Start()
@@ -34,7 +36,14 @@ public class SwitchSequencePuzzle : PuzzleModule
             solutionPattern[i] = Random.value > 0.5f; // 50% chance ON or OFF
         }
 
-        Debug.Log("Generated Solution: " + string.Join(", ", solutionPattern));
+        string solutionString = string.Join(" ", solutionPattern.Select(b => b ? "ON" : "OFF"));
+
+        Debug.Log("Generated Solution: " + solutionString);
+
+        if (solutionText != null)
+        {
+            solutionText.text = "" + solutionString;
+        }
     }
 
     // Toggle the switch state and update the visual feedback

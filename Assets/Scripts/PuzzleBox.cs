@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PuzzleBox : MonoBehaviour
 {
-    public PuzzleModule[] puzzles; // Array of puzzles in the box
+    public PuzzleModule[] puzzles; 
     private int solvedPuzzles = 0;
 
     void Start()
@@ -16,7 +16,6 @@ public class PuzzleBox : MonoBehaviour
     public void CheckCompletion()
     {
         solvedPuzzles++;
-        Debug.Log($"Puzzles Solved: {solvedPuzzles}/{puzzles.Length}");
 
         if (solvedPuzzles >= puzzles.Length)
         {

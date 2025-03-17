@@ -6,8 +6,8 @@ public class LockManager : MonoBehaviour
     public static LockManager Instance;
     public GameObject chest;
     [SerializeField] private GameObject code;
-    private List<Lock> unlockedLocks = new List<Lock>(); // Track unlocked locks
-    private int totalLocks = 3; // Adjust based on the number of locks
+    private List<Lock> unlockedLocks = new List<Lock>(); 
+    private int totalLocks = 3; 
     private Lock[] allLocks;
     private void Awake()
     {
@@ -31,11 +31,6 @@ public class LockManager : MonoBehaviour
                 return true;
             }
         }
-        else
-        {
-            Debug.Log($"You need the {lockToUnlock.requiredKey} to unlock this!");
-        }
-
         return false;
     }
 
@@ -43,7 +38,7 @@ public class LockManager : MonoBehaviour
     {
         if (unlockedLocks.Count == totalLocks)
         {
-            Debug.Log("All locks unlocked!");
+           
             chest.SetActive(false);
             code.SetActive(true);
         }

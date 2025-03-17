@@ -54,7 +54,7 @@ public class Crosshairs : MonoBehaviour
                 // If interact button is pressed, place the circuit piece in the correct spot
                 if (Input.GetMouseButtonDown(0))
                 {
-                    circuitPiece.SnapToCorrectPosition(); // Call the PlacePiece function of CircuitPiece
+                    circuitPiece.SnapToCorrectPosition(); 
                 }
             }
             else if (interactable != null)
@@ -62,7 +62,7 @@ public class Crosshairs : MonoBehaviour
                 // For any other interactable item, use the normal interaction
                 if (Input.GetButtonDown("Interact"))
                 {
-                    interactable.Interact(); // Calls the item's interaction behavior
+                    interactable.Interact(); 
                 }
             }
             else if (inspectable != null)

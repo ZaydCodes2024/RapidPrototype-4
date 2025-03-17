@@ -11,7 +11,6 @@ public class PuzzleModule : MonoBehaviour
         if (isSolved) return;
 
         isSolved = true;
-        Debug.Log($"{gameObject.name} Puzzle Solved!");
         OnSolved?.Invoke(); // Notify PuzzleBox that this puzzle is solved
     }
 }

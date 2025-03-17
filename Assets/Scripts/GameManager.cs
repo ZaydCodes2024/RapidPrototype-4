@@ -41,6 +41,6 @@ public class GameManager : MonoBehaviour
     private IEnumerator GameOver()
     {
         yield return new WaitForSeconds(gameOverDelay);
-        SceneManager.LoadScene("GameOverScene"); // Replace with your actual game over scene name
+        SceneManager.LoadScene("GameOverScene");
     }
 }

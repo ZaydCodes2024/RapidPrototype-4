@@ -6,7 +6,7 @@ public class Inspectable : MonoBehaviour
     public Transform inspectPoint;
     private Vector3 originalPosition;
     private Quaternion originalRotation;
-    private float rotationSpeed = 10f;  // You can adjust the rotation speed here
+    private float rotationSpeed = 15f; 
     public bool isInspecting = false;
     public FpsController controller;
     public void StartInspect(Inspectable obj)

@@ -30,18 +30,16 @@ public class CircuitSequencePuzzle : PuzzleModule
         if (correctedPieces < totalPieces)
         {
             correctedPieces++;
-            Debug.Log($"Correct Move! {correctedPieces}/{totalPieces}");
 
             if (correctedPieces == totalPieces)
             {
-                Debug.Log("Circuit Connected!");
                 Solve();
                 indicatorRenderer.material = solvedMaterial;
             }
         }
         else
         {
-          Debug.Log("All pieces are placed correctly");
+          Debug.Log("");
         }
     }
 }

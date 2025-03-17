@@ -19,8 +19,6 @@ public class Switches : MonoBehaviour
     {
         isOn = !isOn;
         UpdateVisual();
-
-        Debug.Log("Switch toggled: " + (isOn ? "ON" : "OFF"));
         if (switchpuzzleManager != null)
         {
             switchpuzzleManager.ToggleSwitch(this);

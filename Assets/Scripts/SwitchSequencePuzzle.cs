@@ -23,7 +23,7 @@ public class SwitchSequencePuzzle : PuzzleModule
         foreach (Switches sw in switches)
         {
             bool randomState = Random.value > 0.5f; // 50% chance ON or OFF
-            sw.SetState(randomState); // Assuming SetState(bool state) exists in Switches
+            sw.SetState(randomState); 
         }
     }
 
@@ -33,12 +33,10 @@ public class SwitchSequencePuzzle : PuzzleModule
 
         for (int i = 0; i < solutionPattern.Length; i++)
         {
-            solutionPattern[i] = Random.value > 0.5f; // 50% chance ON or OFF
+            solutionPattern[i] = Random.value > 0.5f; 
         }
 
         string solutionString = string.Join(" ", solutionPattern.Select(b => b ? "ON" : "OFF"));
-
-        Debug.Log("Generated Solution: " + solutionString);
 
         if (solutionText != null)
         {
@@ -49,7 +47,6 @@ public class SwitchSequencePuzzle : PuzzleModule
     // Toggle the switch state and update the visual feedback
     public void ToggleSwitch(Switches switchScript)
     {   
-        // Update the state and feedback of the switch
         CheckPuzzleSolution();
     }
 
@@ -61,7 +58,7 @@ public class SwitchSequencePuzzle : PuzzleModule
         {
             if (switches[i].GetState() != solutionPattern[i])
             {
-                return; // If any switch is incorrect, the puzzle is not solved
+                return; 
             }
         }
 
@@ -70,8 +67,7 @@ public class SwitchSequencePuzzle : PuzzleModule
             puzzleSolved = true;    
             Solve();
             indicatorRenderer.material = solvedMaterial;
-            // Trigger the puzzle success (e.g., opening a box, activating a mechanism)
-            Debug.Log("Puzzle Solved!");
+           
         }
     }
 }

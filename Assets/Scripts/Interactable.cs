@@ -1,16 +1,16 @@
 using UnityEngine;
 public class Interactable : MonoBehaviour
 {
-    public string itemName = "Default Item";  // Name of the object
-    public Sprite itemIcon; // (Optional) UI icon for inventory
-    public bool isCollectible = true; // Can this object be picked up?
+    public string itemName = "Default Item";  
+    public Sprite itemIcon; 
+    public bool isCollectible = true; 
 
     public virtual void Interact()
     {
         if (isCollectible)
         {
             InventoryManager.instance.AddItem(gameObject);
-            gameObject.SetActive(false); // Hide object after collecting
+            gameObject.SetActive(false); 
             Debug.Log($"Collected: {itemName}");
         }
     }

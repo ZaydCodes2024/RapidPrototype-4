@@ -4,13 +4,17 @@ public class ButtonSequencePuzzle : PuzzleModule
 {
     [SerializeField] GameObject[] buttons;
     [SerializeField] int[] correctSequence = { 1, 3, 2 , 4};
-    public Color highlightColor = Color.green; // Color when hovered
+    [SerializeField] GameObject indicatorLight;
+    [SerializeField] Material solvedMaterial;
+    private MeshRenderer indicatorRenderer;
+    public Color highlightColor = Color.cyan; // Color when hovered
     public Color defaultColor = Color.white; // Default button color
     int index = 0;
 
     void Start()
     {
-      AssignButtonIDs();  
+      AssignButtonIDs();
+      indicatorRenderer = indicatorLight.GetComponent<MeshRenderer>();
     }
     void AssignButtonIDs()
     {
@@ -38,6 +42,7 @@ public class ButtonSequencePuzzle : PuzzleModule
             if (index >= correctSequence.Length)
             {
                 Solve(); // Puzzle is solved when sequence is completed
+                indicatorRenderer.material = solvedMaterial;
             }
         }
         else

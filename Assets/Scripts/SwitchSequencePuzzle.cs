@@ -6,11 +6,15 @@ public class SwitchSequencePuzzle : PuzzleModule
     public Switches[] switches;
     private bool[] solutionPattern;
     private bool puzzleSolved = false;
+    [SerializeField] GameObject indicatorLight;
+    [SerializeField] Material solvedMaterial;
+    private MeshRenderer indicatorRenderer;
 
     private void Start()
     {
         RandomizeSwitchStates();
         GenerateSolution();
+        indicatorRenderer = indicatorLight.GetComponent<MeshRenderer>();
     }
     private void RandomizeSwitchStates()
     {
@@ -56,6 +60,7 @@ public class SwitchSequencePuzzle : PuzzleModule
         {
             puzzleSolved = true;    
             Solve();
+            indicatorRenderer.material = solvedMaterial;
             // Trigger the puzzle success (e.g., opening a box, activating a mechanism)
             Debug.Log("Puzzle Solved!");
         }

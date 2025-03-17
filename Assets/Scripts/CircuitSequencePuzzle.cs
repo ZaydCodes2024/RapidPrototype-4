@@ -5,6 +5,9 @@ public class CircuitSequencePuzzle : PuzzleModule
 {
     public GameObject circuitHolder;
     private CircuitPiece[] circuitPieces;
+    [SerializeField] GameObject indicatorLight;
+    [SerializeField] Material solvedMaterial;
+    private MeshRenderer indicatorRenderer;
 
     private int totalPieces = 0;
     private int correctedPieces = 0;
@@ -19,6 +22,7 @@ public class CircuitSequencePuzzle : PuzzleModule
         {
             circuitPieces[i] = circuitHolder.transform.GetChild(i).GetComponent<CircuitPiece>();
         }
+        indicatorRenderer = indicatorLight.GetComponent<MeshRenderer>();
     }
 
     public void CorrectMove()
@@ -32,6 +36,7 @@ public class CircuitSequencePuzzle : PuzzleModule
             {
                 Debug.Log("Circuit Connected!");
                 Solve();
+                indicatorRenderer.material = solvedMaterial;
             }
         }
         else

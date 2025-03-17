@@ -1,13 +1,16 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
-
+using UnityEngine.SceneManagement; 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     [SerializeField] private float timer = 60f;
     private bool isRunning = true;
     [SerializeField] private TextMeshProUGUI timerText;
+    private float gameOverDelay = 3f;
     private void Awake()
     {
         Instance = this;
@@ -32,7 +35,12 @@ public class GameManager : MonoBehaviour
 
     public void CompleteGame()
     {
-        Debug.Log("Game Over!");
         isRunning = false;
+        StartCoroutine(GameOver());
+    }
+    private IEnumerator GameOver()
+    {
+        yield return new WaitForSeconds(gameOverDelay);
+        SceneManager.LoadScene("GameOverScene"); // Replace with your actual game over scene name
     }
 }

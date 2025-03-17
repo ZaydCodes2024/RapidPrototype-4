@@ -4985,7 +4985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 722f693a4681e42ce89e09a0e4b8730a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 60
+  timer: 300
   timerText: {fileID: 1046944224}
 --- !u!4 &1389889335
 Transform:
@@ -10657,7 +10657,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!23 &6458451085309572095
 MeshRenderer:
   m_ObjectHideFlags: 0

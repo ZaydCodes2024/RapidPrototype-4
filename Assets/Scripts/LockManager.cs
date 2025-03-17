@@ -5,6 +5,7 @@ public class LockManager : MonoBehaviour
 {
     public static LockManager Instance;
     public GameObject chest;
+    [SerializeField] private GameObject code;
     private List<Lock> unlockedLocks = new List<Lock>(); // Track unlocked locks
     private int totalLocks = 3; // Adjust based on the number of locks
     private Lock[] allLocks;
@@ -44,6 +45,7 @@ public class LockManager : MonoBehaviour
         {
             Debug.Log("All locks unlocked!");
             chest.SetActive(false);
+            code.SetActive(true);
         }
     }
 }

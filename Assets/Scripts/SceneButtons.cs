@@ -5,9 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class SceneButtons : MonoBehaviour
 {
+    void Start()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true; 
+    }
+    public void Play()
+    {
+          
+        SceneManager.LoadScene("MainScene");
+    }
     public void Restart()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("MainMenu");
     }
     public void Quit()
     {

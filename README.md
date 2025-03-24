@@ -1,4 +1,8 @@
 # Rapid Game Prototype - 4
+# Theme - Puzzle Box
+# Modifiers - No Combat
+
+
 
 ## Game that combines Keep talking and Nobody explodes and Escape Rooms.
 

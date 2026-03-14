@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     }
     private void HandleMovement()
     {
+        if (Inspectable.Instance != null && Inspectable.Instance.IsInspecting())     return;
+
         Vector2 inputVector = GameInput.Instance.GetMovementVectorNormalized();
 
         Vector3 forward = cameraTransform.forward;

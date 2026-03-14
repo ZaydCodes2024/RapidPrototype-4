@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Crosshairs : MonoBehaviour
 {   
@@ -18,7 +20,8 @@ public class Crosshairs : MonoBehaviour
     private GUIStyle crosshairStyle = new GUIStyle();
     private bool showInteractableCrosshair = false;
     private RaycastHit hit;
-    void OnGUI()
+    private Interactable currentInteractable = null;
+    private void OnGUI()
     {
         crosshairStyle.normal.background = showInteractableCrosshair ? interactableCrosshair : normalCrosshair;
         float scale = showInteractableCrosshair ? interactableScale : normalScale;
@@ -28,7 +31,17 @@ public class Crosshairs : MonoBehaviour
         GUI.DrawTexture(new Rect(position.x, position.y, crosshairStyle.normal.background.width * scale, crosshairStyle.normal.background.height * scale), crosshairStyle.normal.background);
     }
 
-    void Update()
+    private void Start()
+    {
+        GameInput.Instance.OnInteractAction += GameInput_OnInteractAction;
+    }
+
+    private void GameInput_OnInteractAction(object sender, EventArgs e)
+    {
+        currentInteractable?.Interact();
+    }
+
+    private void Update()
     {
         PerformRayCast();
     }
@@ -40,61 +53,37 @@ public class Crosshairs : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 4f, interactableLayerMask))
         {
             showInteractableCrosshair = true;
-            Interactable interactable = hit.collider.GetComponent<Interactable>();
+
+            currentInteractable = hit.collider.GetComponent<Interactable>();
             Inspectable inspectable = hit.collider.GetComponent<Inspectable>();
             CircuitPiece circuitPiece = hit.collider.GetComponent<CircuitPiece>();
             Switches switches = hit.collider.GetComponent<Switches>();
-
+    
             // If the circuit piece is being hovered over
             if (circuitPiece != null && InventoryManager.instance.HasItem(circuitPiece.circuitPiecePrefab))
             {
-                // Change the crosshair to show it's an appropriate placement
-                showInteractableCrosshair = true;
-
                 // If interact button is pressed, place the circuit piece in the correct spot
-                if (Input.GetMouseButtonDown(0))
-                {
-                    circuitPiece.SnapToCorrectPosition(); 
-                }
-            }
-            else if (interactable != null)
-            {
-                // For any other interactable item, use the normal interaction
-                if (Input.GetButtonDown("Interact"))
-                {
-                    interactable.Interact(); 
-                }
+                if (Mouse.current.leftButton.wasPressedThisFrame)   circuitPiece.SnapToCorrectPosition(); 
             }
             else if (inspectable != null)
             {
                 // If the player presses the 'I' key, start inspecting the object
-                if (Input.GetKeyDown(KeyCode.I))
-                {
-                    inspectable.StartInspect(inspectable);
-                }
+                if (Keyboard.current.iKey.wasPressedThisFrame)    inspectable.StartInspect(inspectable);
 
                 // Allow rotation while inspecting the object
-                if (inspectable != null && inspectable.isInspecting)
-                {
-                    inspectable.HandleInspectionRotation();
-                }
+                if (inspectable.IsInspecting())     inspectable.HandleInspectionRotation();
 
-                if (Input.GetKeyDown(KeyCode.Escape))
-                {
-                    inspectable.StopInspect();
-                }
+                if (Keyboard.current.escapeKey.wasPressedThisFrame)    inspectable.StopInspect();
             }
             else if (switches != null)
             {
-                if (Input.GetMouseButtonDown(0))
-                {
-                    switches.ToggleState();
-                }
+                if (Mouse.current.leftButton.wasPressedThisFrame)     switches.ToggleState();
             }
         }
         else
         {
             showInteractableCrosshair = false;
+            currentInteractable = null;
         }
     }
 }

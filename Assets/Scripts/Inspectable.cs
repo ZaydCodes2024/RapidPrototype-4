@@ -3,12 +3,17 @@ using UnityEngine.InputSystem;
 
 public class Inspectable : MonoBehaviour
 {
+    public static Inspectable Instance {get; private set;}
     private GameObject currentObject;
-    public Transform inspectPoint;
+    [SerializeField] private Transform inspectPoint;
     private Vector3 originalPosition;
     private Quaternion originalRotation;
     private float rotationSpeed = 15f; 
-    public bool isInspecting = false;
+    private bool isInspecting = false;
+    private void Awake()
+    {
+        Instance = this;
+    }
     public void StartInspect(Inspectable obj)
     {
         if (isInspecting) return;
@@ -54,5 +59,9 @@ public class Inspectable : MonoBehaviour
             // Rotate the object based on the scroll input
             RotateObject(rotationAmount, 0);
         }
+    }
+    public bool IsInspecting()
+    {
+        return isInspecting;
     }
 }

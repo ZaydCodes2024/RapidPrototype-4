@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float runSpeed;
     [SerializeField] private Transform cameraTransform;
     [SerializeField] private float mouseSensitivity;
-    private Vector3 playerVelocity;
+    private float rotateSpeed = 10f;
     public bool isInspecting = false;
     // Start is called before the first frame update
     void Start()
@@ -21,11 +21,20 @@ public class Player : MonoBehaviour
     private void Update()
     {
         HandleMovement();
+        HandleMouseLook();
     }
     private void HandleMovement()
     {
         Vector2 inputVector = GameInput.Instance.GetMovementVectorNormalized();
-        Vector3 moveDir = new Vector3(inputVector.x, 0 ,inputVector.y);
+
+        Vector3 forward = cameraTransform.forward;
+        Vector3 right = cameraTransform.right;
+
+        // Flatten them so looking up/down doesn't move the player vertically
+        forward.y = 0f;
+        right.y = 0f;
+
+        Vector3 moveDir = forward * inputVector.y + right * inputVector.x;
         float moveSpeed =  GameInput.Instance.GetMovementSpeed(runSpeed,walkSpeed);
 
         float moveDistance = moveSpeed * Time.deltaTime;
@@ -62,5 +71,19 @@ public class Player : MonoBehaviour
         {
             transform.position += moveDir * moveDistance;
         }
+    }
+    private void HandleMouseLook()
+    {
+        float mouseX = Mouse.current.delta.ReadValue().x * mouseSensitivity;
+        float mouseY = Mouse.current.delta.ReadValue().y  * mouseSensitivity;
+        transform.Rotate(Vector3.up * mouseX);
+
+        Vector3 currentRotation = cameraTransform.rotation.eulerAngles;
+        float desiredRotationX = currentRotation.x - mouseY;
+
+        if (desiredRotationX > 180) desiredRotationX -= 360;
+
+        desiredRotationX = Mathf.Clamp(desiredRotationX, -90f, 90f);
+        cameraTransform.rotation = Quaternion.Euler(desiredRotationX, currentRotation.y, currentRotation.z);
     }
 }

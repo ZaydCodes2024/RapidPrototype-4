@@ -24,5 +24,10 @@ public class GameInput : MonoBehaviour
         float movementSpeed = playerInputActions.Player.Sprint.IsPressed() ? runspeed : walkSpeed;
         return  movementSpeed;
     }
+    public Vector2 GetScrollVectorNormalized()
+    {
+        Vector2 inputVector = playerInputActions.Player.Scroll.ReadValue<Vector2>().normalized;
+        return inputVector;
+    }
 
 }

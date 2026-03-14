@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Inspectable : MonoBehaviour
 {
@@ -43,7 +44,7 @@ public class Inspectable : MonoBehaviour
     public void HandleInspectionRotation()
     {
         // Get scroll wheel input (positive or negative) to rotate the object
-        float scrollInput = Input.GetAxis("Mouse ScrollWheel");
+        float scrollInput = GameInput.Instance.GetScrollVectorNormalized().y;
 
         // If there's scroll input, apply rotation
         if (scrollInput != 0)

@@ -8,12 +8,10 @@ public class Inspectable : MonoBehaviour
     private Quaternion originalRotation;
     private float rotationSpeed = 15f; 
     public bool isInspecting = false;
-    public FpsController controller;
     public void StartInspect(Inspectable obj)
     {
         if (isInspecting) return;
 
-        controller.StartInspect();
         currentObject = obj.gameObject;
         originalPosition = currentObject.transform.position;
         originalRotation = currentObject.transform.rotation;
@@ -30,7 +28,6 @@ public class Inspectable : MonoBehaviour
         
         currentObject.transform.position = originalPosition;
         currentObject.transform.rotation = originalRotation;
-        controller.StopInspect();
         currentObject = null;
         isInspecting = false;
     }

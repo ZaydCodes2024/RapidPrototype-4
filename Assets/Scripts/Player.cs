@@ -9,10 +9,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float runSpeed;
     [SerializeField] private Transform cameraTransform;
     [SerializeField] private float mouseSensitivity;
-    private float rotateSpeed = 10f;
-    public bool isInspecting = false;
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
     }

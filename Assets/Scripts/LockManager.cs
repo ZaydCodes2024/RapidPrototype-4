@@ -4,8 +4,9 @@ using System.Collections.Generic;
 public class LockManager : MonoBehaviour
 {
     public static LockManager Instance;
-    public GameObject chest;
+    [SerializeField] private GameObject chest;
     [SerializeField] private GameObject code;
+    [SerializeField] private GameObject puzzleBox;
     private List<Lock> unlockedLocks = new List<Lock>(); 
     private int totalLocks = 3; 
     private Lock[] allLocks;
@@ -38,9 +39,9 @@ public class LockManager : MonoBehaviour
     {
         if (unlockedLocks.Count == totalLocks)
         {
-           
             chest.SetActive(false);
             code.SetActive(true);
+            puzzleBox.SetActive(true);
         }
     }
 }

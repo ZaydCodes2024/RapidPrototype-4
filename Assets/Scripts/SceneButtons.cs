@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneButtons : MonoBehaviour
 {
-    void Start()
+    private void Awake()
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true; 
@@ -13,7 +13,7 @@ public class SceneButtons : MonoBehaviour
     public void Play()
     {
           
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("GameScene");
     }
     public void Restart()
     {

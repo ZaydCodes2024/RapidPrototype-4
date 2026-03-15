@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +9,7 @@ public class GameInput : MonoBehaviour
 {
     public static GameInput Instance {get; private set;}
     public event EventHandler OnInteractAction;
+    public event EventHandler OnMouseButtonAction;
     InputActions playerInputActions;
     private void Awake()
     {
@@ -15,6 +17,12 @@ public class GameInput : MonoBehaviour
         playerInputActions = new InputActions();
         playerInputActions.Enable();
         playerInputActions.Player.Interact.performed += Interact_Performed;
+        playerInputActions.Player.MouseButton.performed += MouseButton_Performed;
+    }
+
+    private void MouseButton_Performed(InputAction.CallbackContext context)
+    {
+        OnMouseButtonAction?.Invoke(this,EventArgs.Empty);
     }
 
     private void Interact_Performed(InputAction.CallbackContext context)

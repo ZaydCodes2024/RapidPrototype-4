@@ -6,14 +6,20 @@ public class Crosshairs : MonoBehaviour
 {   
     [Header("Camera")]
     [SerializeField] Camera playerCamera;
+
     [Header("Main Crosshair")]
     [SerializeField] Texture2D normalCrosshair;
     [SerializeField] float normalScale = 1f;
+
     [Space]
+
     [Header("Interactable Crosshair")]
     [SerializeField] Texture2D interactableCrosshair; 
     [SerializeField] float interactableScale = 1.5f;
+    [SerializeField] float interactionDistance = 4f;
+
     [Space]
+
     [Header("Interactable Crosshair Triggers")]
     [SerializeField] LayerMask interactableLayerMask; 
 
@@ -21,6 +27,8 @@ public class Crosshairs : MonoBehaviour
     private bool showInteractableCrosshair = false;
     private RaycastHit hit;
     private IInteractable currentInteractable = null;
+    private CircuitPiecePostion circuitPiecePosition = null;
+    private Switches switches = null;
     private void OnGUI()
     {
         crosshairStyle.normal.background = showInteractableCrosshair ? interactableCrosshair : normalCrosshair;
@@ -34,6 +42,13 @@ public class Crosshairs : MonoBehaviour
     private void Start()
     {
         GameInput.Instance.OnInteractAction += GameInput_OnInteractAction;
+        GameInput.Instance.OnMouseButtonAction += GameInput_OnMouseButtonAction;
+    }
+
+    private void GameInput_OnMouseButtonAction(object sender, EventArgs e)
+    {
+        circuitPiecePosition?.SnapToCorrectPosition(); // If mouse button is pressed, place the circuit piece in the correct spot
+        switches?.ToggleState();
     }
 
     private void GameInput_OnInteractAction(object sender, EventArgs e)
@@ -50,24 +65,16 @@ public class Crosshairs : MonoBehaviour
     {
         Ray ray = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
 
-        if (Physics.Raycast(ray, out hit, 4f, interactableLayerMask))
+        if (Physics.Raycast(ray, out hit, interactionDistance, interactableLayerMask))
         {
             showInteractableCrosshair = true;
 
             currentInteractable = hit.collider.GetComponent<IInteractable>();
             Inspectable inspectable = hit.collider.GetComponent<Inspectable>();
-            CircuitPiecePostion circuitPiecePosition = hit.collider.GetComponent<CircuitPiecePostion>();
-            Switches switches = hit.collider.GetComponent<Switches>();
+            circuitPiecePosition = hit.collider.GetComponent<CircuitPiecePostion>();
+            switches = hit.collider.GetComponent<Switches>();
 
-            // && InventoryManager.Instance.HasItem(circuitPiece.circuitPiecePrefab
-
-            // If the circuit piece is being hovered over
-            if (circuitPiecePosition != null)
-            {
-                // If interact button is pressed, place the circuit piece in the correct spot
-                if (Mouse.current.leftButton.wasPressedThisFrame)   circuitPiecePosition.SnapToCorrectPosition(); 
-            }
-            else if (inspectable != null)
+            if (inspectable != null)
             {
                 // If the player presses the 'I' key, start inspecting the object
                 if (Keyboard.current.iKey.wasPressedThisFrame)    inspectable.StartInspect(inspectable);
@@ -77,15 +84,13 @@ public class Crosshairs : MonoBehaviour
 
                 if (Keyboard.current.escapeKey.wasPressedThisFrame)    inspectable.StopInspect();
             }
-            else if (switches != null)
-            {
-                if (Mouse.current.leftButton.wasPressedThisFrame)     switches.ToggleState();
-            }
         }
         else
         {
             showInteractableCrosshair = false;
             currentInteractable = null;
+            circuitPiecePosition = null;
+            switches = null;
         }
     }
 }

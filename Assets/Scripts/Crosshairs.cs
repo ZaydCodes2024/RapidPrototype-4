@@ -56,16 +56,16 @@ public class Crosshairs : MonoBehaviour
 
             currentInteractable = hit.collider.GetComponent<IInteractable>();
             Inspectable inspectable = hit.collider.GetComponent<Inspectable>();
-            CircuitPiece circuitPiece = hit.collider.GetComponent<CircuitPiece>();
+            CircuitPiecePostion circuitPiecePosition = hit.collider.GetComponent<CircuitPiecePostion>();
             Switches switches = hit.collider.GetComponent<Switches>();
 
             // && InventoryManager.Instance.HasItem(circuitPiece.circuitPiecePrefab
 
             // If the circuit piece is being hovered over
-            if (circuitPiece != null)
+            if (circuitPiecePosition != null)
             {
                 // If interact button is pressed, place the circuit piece in the correct spot
-                if (Mouse.current.leftButton.wasPressedThisFrame)   circuitPiece.SnapToCorrectPosition(); 
+                if (Mouse.current.leftButton.wasPressedThisFrame)   circuitPiecePosition.SnapToCorrectPosition(); 
             }
             else if (inspectable != null)
             {

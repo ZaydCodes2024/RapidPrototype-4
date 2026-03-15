@@ -1,30 +1,23 @@
 using UnityEngine;
-public class CircuitPiece : MonoBehaviour
+public class CircuitPiece : MonoBehaviour, IInteractable
 {
-    
-    public Transform correctPosition; 
-    public GameObject circuitPiecePrefab;
-    private CircuitSequencePuzzle circuitPuzzle;
-    private void Awake()
+    public void Interact()
     {
-        circuitPuzzle = FindObjectOfType<CircuitSequencePuzzle>();
+        if (IsInventoryItem())
+        {
+            InventoryManager.Instance.AddItem(this);
+            Debug.Log("Collected: " + gameObject.name);
+            gameObject.SetActive(false);
+        }
     }
 
-    // Snaps the piece to the correct position on the circuit
-    public void SnapToCorrectPosition()
+    public bool IsInspectable()
     {
-        if (correctPosition != null && InventoryManager.instance.HasItem(circuitPiecePrefab))
-        {   
-            circuitPiecePrefab.transform.SetParent(correctPosition);
-            
-            // Reset transform properties to align perfectly
-            circuitPiecePrefab.transform.localPosition = Vector3.zero; 
-            circuitPiecePrefab.transform.localRotation = Quaternion.identity; 
-            circuitPiecePrefab.transform.localScale = Vector3.one; 
-            circuitPiecePrefab.SetActive(true);
-            InventoryManager.instance.RemoveItem(circuitPiecePrefab); // Remove from inventory after placing
-            circuitPuzzle.CorrectMove();  // Notify puzzle that the move is correct
-            this.enabled = false; // Disable this script to prevent further interaction with the piece
-        }
+        return false;
+    }
+
+    public bool IsInventoryItem()
+    {
+        return true;
     }
 }

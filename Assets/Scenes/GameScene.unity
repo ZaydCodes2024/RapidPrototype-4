@@ -310,7 +310,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CircuitPiece (4)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3205426502872185603, guid: 01071b81c69b34c2cacfac244fe7eb9a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -398,7 +399,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CircuitPiece (5)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3205426502872185603, guid: 01071b81c69b34c2cacfac244fe7eb9a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -845,10 +847,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7281981041991490411, guid: 01071b81c69b34c2cacfac244fe7eb9a,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 186582876}
-    - targetCorrespondingSourceObject: {fileID: 7281981041991490411, guid: 01071b81c69b34c2cacfac244fe7eb9a,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 186582878}
   m_SourcePrefab: {fileID: 100100000, guid: 01071b81c69b34c2cacfac244fe7eb9a, type: 3}
 --- !u!1 &186582875 stripped
@@ -857,7 +855,13 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 186582874}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &186582876
+--- !u!4 &186582877 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7165172232335439749, guid: 01071b81c69b34c2cacfac244fe7eb9a,
+    type: 3}
+  m_PrefabInstance: {fileID: 186582874}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &186582878
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -866,39 +870,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 186582875}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d46f0fbece28412dbbe1669bb7c906a, type: 3}
+  m_Script: {fileID: 11500000, guid: ded4089e1ecbe4a9e8f53802d5d49824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: CircuitPiece
-  itemIcon: {fileID: 0}
-  isCollectible: 1
---- !u!4 &186582877 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7165172232335439749, guid: 01071b81c69b34c2cacfac244fe7eb9a,
-    type: 3}
-  m_PrefabInstance: {fileID: 186582874}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &186582878
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 186582875}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.2741561, y: 0.463943, z: 0.26373672}
-  m_Center: {x: -0.0042612553, y: 0.2680285, z: -0.01086998}
 --- !u!1 &214705999
 GameObject:
   m_ObjectHideFlags: 0
@@ -909,7 +883,7 @@ GameObject:
   m_Component:
   - component: {fileID: 214706000}
   - component: {fileID: 214706002}
-  - component: {fileID: 214706001}
+  - component: {fileID: 214706003}
   m_Layer: 6
   m_Name: pos1
   m_TagString: Untagged
@@ -932,20 +906,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6030955659655604239}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!114 &214706001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 214705999}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ded4089e1ecbe4a9e8f53802d5d49824, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  correctPosition: {fileID: 214706000}
-  circuitPiecePrefab: {fileID: 5078923519319732108}
 --- !u!65 &214706002
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -967,6 +927,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.17028825, y: 0.44680715, z: 0.28180084}
   m_Center: {x: -0.01, y: 0.29, z: 0.06}
+--- !u!114 &214706003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214705999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dfbfc95d7e824b78861c1e5c2338f25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  correctPosition: {fileID: 214706000}
+  circuitPiecePrefab: {fileID: 5561988027915285817}
 --- !u!1 &237410425
 GameObject:
   m_ObjectHideFlags: 0
@@ -1396,7 +1370,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CircuitPiece (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3205426502872185603, guid: 01071b81c69b34c2cacfac244fe7eb9a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1860,7 +1835,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CircuitPiece (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3205426502872185603, guid: 01071b81c69b34c2cacfac244fe7eb9a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1954,7 +1930,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CircuitPiece (6)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3205426502872185603, guid: 01071b81c69b34c2cacfac244fe7eb9a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2341,7 +2318,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CircuitPiece
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3205426502872185603, guid: 01071b81c69b34c2cacfac244fe7eb9a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4203,10 +4181,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7281981041991490411, guid: 01071b81c69b34c2cacfac244fe7eb9a,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1044326775}
-    - targetCorrespondingSourceObject: {fileID: 7281981041991490411, guid: 01071b81c69b34c2cacfac244fe7eb9a,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1044326777}
   m_SourcePrefab: {fileID: 100100000, guid: 01071b81c69b34c2cacfac244fe7eb9a, type: 3}
 --- !u!1 &1044326774 stripped
@@ -4215,7 +4189,13 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1044326773}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1044326775
+--- !u!4 &1044326776 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7165172232335439749, guid: 01071b81c69b34c2cacfac244fe7eb9a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1044326773}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1044326777
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4224,39 +4204,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1044326774}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d46f0fbece28412dbbe1669bb7c906a, type: 3}
+  m_Script: {fileID: 11500000, guid: ded4089e1ecbe4a9e8f53802d5d49824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: CircuitPiece
-  itemIcon: {fileID: 0}
-  isCollectible: 1
---- !u!4 &1044326776 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7165172232335439749, guid: 01071b81c69b34c2cacfac244fe7eb9a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1044326773}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &1044326777
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1044326774}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.2741561, y: 0.463943, z: 0.26373672}
-  m_Center: {x: -0.0042612553, y: 0.2680285, z: -0.01086998}
 --- !u!1 &1046944222
 GameObject:
   m_ObjectHideFlags: 0
@@ -4745,7 +4695,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1314255009}
   - component: {fileID: 1314255011}
-  - component: {fileID: 1314255010}
+  - component: {fileID: 1314255012}
   m_Layer: 6
   m_Name: pos1 (1)
   m_TagString: Untagged
@@ -4768,20 +4718,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6030955659655604239}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!114 &1314255010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1314255008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ded4089e1ecbe4a9e8f53802d5d49824, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  correctPosition: {fileID: 1314255009}
-  circuitPiecePrefab: {fileID: 1044326774}
 --- !u!65 &1314255011
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4803,6 +4739,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.17028825, y: 0.44680715, z: 0.28180084}
   m_Center: {x: -0.01, y: 0.29, z: 0.06}
+--- !u!114 &1314255012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1314255008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dfbfc95d7e824b78861c1e5c2338f25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  correctPosition: {fileID: 1314255009}
+  circuitPiecePrefab: {fileID: 1044326777}
 --- !u!1 &1346403843
 GameObject:
   m_ObjectHideFlags: 0
@@ -5939,7 +5889,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CircuitPiece (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3205426502872185603, guid: 01071b81c69b34c2cacfac244fe7eb9a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6634,7 +6585,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1964231295}
   - component: {fileID: 1964231297}
-  - component: {fileID: 1964231296}
+  - component: {fileID: 1964231298}
   m_Layer: 6
   m_Name: pos1 (2)
   m_TagString: Untagged
@@ -6657,20 +6608,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6030955659655604239}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!114 &1964231296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1964231294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ded4089e1ecbe4a9e8f53802d5d49824, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  correctPosition: {fileID: 1964231295}
-  circuitPiecePrefab: {fileID: 186582875}
 --- !u!65 &1964231297
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6692,6 +6629,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.17028825, y: 0.35643768, z: 0.22178872}
   m_Center: {x: -0.009999997, y: 0.30181038, z: 0.07065458}
+--- !u!114 &1964231298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964231294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dfbfc95d7e824b78861c1e5c2338f25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  correctPosition: {fileID: 1964231295}
+  circuitPiecePrefab: {fileID: 186582878}
 --- !u!4 &1968504695 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7165172232335439749, guid: 01071b81c69b34c2cacfac244fe7eb9a,
@@ -6708,7 +6659,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1972380992}
   - component: {fileID: 1972380994}
-  - component: {fileID: 1972380993}
+  - component: {fileID: 1972380995}
   m_Layer: 6
   m_Name: pos1 (3)
   m_TagString: Untagged
@@ -6731,20 +6682,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6030955659655604239}
   m_LocalEulerAnglesHint: {x: 0, y: 89.425, z: 0.003}
---- !u!114 &1972380993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1972380991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ded4089e1ecbe4a9e8f53802d5d49824, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  correctPosition: {fileID: 1972380992}
-  circuitPiecePrefab: {fileID: 1999026069}
 --- !u!65 &1972380994
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6766,6 +6703,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.17028825, y: 0.44680715, z: 0.28180084}
   m_Center: {x: -0.01, y: 0.29, z: 0.06}
+--- !u!114 &1972380995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1972380991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dfbfc95d7e824b78861c1e5c2338f25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  correctPosition: {fileID: 1972380992}
+  circuitPiecePrefab: {fileID: 1999026072}
 --- !u!1 &1987478944
 GameObject:
   m_ObjectHideFlags: 0
@@ -6921,10 +6872,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7281981041991490411, guid: 01071b81c69b34c2cacfac244fe7eb9a,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1999026070}
-    - targetCorrespondingSourceObject: {fileID: 7281981041991490411, guid: 01071b81c69b34c2cacfac244fe7eb9a,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1999026072}
   m_SourcePrefab: {fileID: 100100000, guid: 01071b81c69b34c2cacfac244fe7eb9a, type: 3}
 --- !u!1 &1999026069 stripped
@@ -6933,7 +6880,13 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1999026068}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1999026070
+--- !u!4 &1999026071 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7165172232335439749, guid: 01071b81c69b34c2cacfac244fe7eb9a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1999026068}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1999026072
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6942,39 +6895,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1999026069}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d46f0fbece28412dbbe1669bb7c906a, type: 3}
+  m_Script: {fileID: 11500000, guid: ded4089e1ecbe4a9e8f53802d5d49824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: CircuitPiece
-  itemIcon: {fileID: 0}
-  isCollectible: 1
---- !u!4 &1999026071 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7165172232335439749, guid: 01071b81c69b34c2cacfac244fe7eb9a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1999026068}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &1999026072
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1999026069}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.2741561, y: 0.463943, z: 0.26373672}
-  m_Center: {x: -0.0042612553, y: 0.2680285, z: -0.01086998}
 --- !u!1 &2054439966
 GameObject:
   m_ObjectHideFlags: 0
@@ -10010,7 +9933,7 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8115721972116412377}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5561988027915285815
+--- !u!114 &5561988027915285817
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10019,33 +9942,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5078923519319732108}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d46f0fbece28412dbbe1669bb7c906a, type: 3}
+  m_Script: {fileID: 11500000, guid: ded4089e1ecbe4a9e8f53802d5d49824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: CircuitPiece
-  itemIcon: {fileID: 0}
-  isCollectible: 1
---- !u!65 &5561988027915285816
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5078923519319732108}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.2741561, y: 0.463943, z: 0.26373672}
-  m_Center: {x: -0.0042612553, y: 0.2680285, z: -0.01086998}
 --- !u!33 &5584308895036877413
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -10726,7 +10625,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &6458451085309572095
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -11448,7 +11347,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7488384967087774728
 Transform:
   m_ObjectHideFlags: 0
@@ -11733,11 +11632,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7281981041991490411, guid: 01071b81c69b34c2cacfac244fe7eb9a,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5561988027915285815}
-    - targetCorrespondingSourceObject: {fileID: 7281981041991490411, guid: 01071b81c69b34c2cacfac244fe7eb9a,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5561988027915285816}
+      addedObject: {fileID: 5561988027915285817}
   m_SourcePrefab: {fileID: 100100000, guid: 01071b81c69b34c2cacfac244fe7eb9a, type: 3}
 --- !u!1 &8165794493042801172
 GameObject:

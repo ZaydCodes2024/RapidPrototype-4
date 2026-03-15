@@ -8,7 +8,7 @@ public class LockManager : MonoBehaviour
     [SerializeField] private GameObject code;
     [SerializeField] private GameObject puzzleBox;
     [SerializeField] private List<Lock> unlockedLocks = new List<Lock>(); 
-    private int totalLocks = 3; 
+    private int totalLocks; 
     private void Awake()
     {
        Instance = this;
@@ -16,6 +16,8 @@ public class LockManager : MonoBehaviour
 
     public void UnlockLock()
     {
+        totalLocks++;
+
         if (Lock.Instance.IsLockUnlocked())
         {
             CheckCompletion();
@@ -28,6 +30,7 @@ public class LockManager : MonoBehaviour
             chest.SetActive(false);
             code.SetActive(true);
             puzzleBox.SetActive(true);
+            totalLocks = 0;
         }
     }
 }

@@ -84,9 +84,9 @@ public class Crosshairs : MonoBehaviour
             if (puzzleBox != null)
             {
                 // If the player presses the 'I' key, start inspecting the object
-                if (Keyboard.current.iKey.wasPressedThisFrame)    puzzleBox.StartInspect(puzzleBox);
+                if (Keyboard.current.iKey.wasPressedThisFrame)    puzzleBox.StartInspect();
 
-                if (Keyboard.current.escapeKey.wasPressedThisFrame)    puzzleBox.StopInspect();
+                if (Keyboard.current.escapeKey.wasPressedThisFrame)    puzzleBox.ExitInspect();
             }
         }
         else

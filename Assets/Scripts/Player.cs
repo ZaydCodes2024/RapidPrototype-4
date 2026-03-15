@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     }
     private void HandleMovement()
     {
-        //if (PuzzleBox.Instance.IsInspectable())     return;
+        if (Inspectable.Instance != null && Inspectable.Instance.GetInspectingState())     return;
 
         Vector2 inputVector = GameInput.Instance.GetMovementVectorNormalized();
 

@@ -11341,6 +11341,7 @@ GameObject:
   - component: {fileID: 8791242652441356613}
   - component: {fileID: 8791242652441356616}
   - component: {fileID: 8791242652441356615}
+  - component: {fileID: 8791242652441356617}
   m_Layer: 6
   m_Name: PuzzleBox
   m_TagString: Untagged
@@ -12243,7 +12244,6 @@ MonoBehaviour:
   - {fileID: 1605278606}
   - {fileID: 1987478945}
   - {fileID: 85591026}
-  inspectPoint: {fileID: 253455927}
 --- !u!65 &8791242652441356616
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12265,6 +12265,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 1.9999998, z: 1.9999996}
   m_Center: {x: 0, y: -0.0000009536743, z: 0}
+--- !u!114 &8791242652441356617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7388499946138501135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07a5a0f689dad459c96b32c83a7227f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inspectPoint: {fileID: 253455927}
+  isInspecting: 0
 --- !u!4 &8802961552834968666 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6244220137885232065, guid: 346c48140b7df44f1bc295768d583e7e,

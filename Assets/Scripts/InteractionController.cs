@@ -37,7 +37,7 @@ public class InteractionController : MonoBehaviour
 
     private void GameInput_OnInteractAction(object sender, EventArgs e)
     {
-        if (Inspectable.Instance.GetInspectingState())
+        if (Inspectable.Instance != null && Inspectable.Instance.GetInspectingState())
         {
             Inspectable.Instance.StopInspect();
             return;
@@ -66,5 +66,11 @@ public class InteractionController : MonoBehaviour
         {
             this.switches = switches;
         }
+    }
+    public void ClearInteractions()
+    {
+        currentInteractable = null;
+        circuitPiecePosition = null;
+        switches = null;
     }
 }

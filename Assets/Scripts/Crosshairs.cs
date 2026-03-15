@@ -54,6 +54,7 @@ public class Crosshairs : MonoBehaviour
         else
         {
             showInteractableCrosshair = false;
+            InteractionController.Instance.ClearInteractions();
         }
     }
 }

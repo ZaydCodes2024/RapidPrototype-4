@@ -44,14 +44,4 @@ public class PuzzleBox : MonoBehaviour, IInteractable
     {
         return false;
     }
-
-    public bool IsInspectable()
-    {
-        return true;
-    }
-   
-    public PuzzleBox GetPuzzleBoxInstance()
-    {
-        return this;
-    }
 }

@@ -13,12 +13,6 @@ public class Key : MonoBehaviour, IInteractable
             gameObject.SetActive(false);
         }
     }
-
-    public bool IsInspectable()
-    {
-        return false;
-    }
-
     public bool IsInventoryItem()
     {
         return true;

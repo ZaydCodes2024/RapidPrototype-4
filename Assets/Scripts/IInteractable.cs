@@ -6,5 +6,4 @@ public interface IInteractable
 {
    public void Interact();
    public bool IsInventoryItem();
-   public bool IsInspectable();
 }

@@ -30,10 +30,6 @@ public class Lock : MonoBehaviour, IInteractable
     {
         return isUnlocked;
     }
-    public bool IsInspectable()
-    {
-        return false;
-    }
 
     public bool IsInventoryItem()
     {

@@ -77,15 +77,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Inspect",
-                    "type": "Button",
-                    "id": "b7d08cf1-0f95-48db-b5ee-214fd024a2ca",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -383,17 +374,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "MouseButton",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "79632564-7a06-4ee2-b71a-2f931ac4dc05",
-                    "path": "<Keyboard>/f",
-                    "interactions": "Press",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Inspect",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

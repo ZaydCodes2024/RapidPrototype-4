@@ -11,11 +11,6 @@ public class CircuitPiece : MonoBehaviour, IInteractable
         }
     }
 
-    public bool IsInspectable()
-    {
-        return false;
-    }
-
     public bool IsInventoryItem()
     {
         return true;

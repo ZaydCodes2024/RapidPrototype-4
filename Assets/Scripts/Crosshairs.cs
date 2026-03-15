@@ -26,9 +26,7 @@ public class Crosshairs : MonoBehaviour
     private GUIStyle crosshairStyle = new GUIStyle();
     private bool showInteractableCrosshair = false;
     private RaycastHit hit;
-    private IInteractable currentInteractable;
-    private CircuitPiecePostion circuitPiecePosition;
-    private Switches switches;
+
     private void OnGUI()
     {
         crosshairStyle.normal.background = showInteractableCrosshair ? interactableCrosshair : normalCrosshair;
@@ -39,40 +37,6 @@ public class Crosshairs : MonoBehaviour
         GUI.DrawTexture(new Rect(position.x, position.y, crosshairStyle.normal.background.width * scale, crosshairStyle.normal.background.height * scale), crosshairStyle.normal.background);
     }
 
-    private void Start()
-    {
-        GameInput.Instance.OnInteractAction += GameInput_OnInteractAction;
-        GameInput.Instance.OnMouseButtonAction += GameInput_OnMouseButtonAction;
-        GameInput.Instance.OnMouseScrollAction += GameInput_OnMouseScrollAction;
-    }
-
-    private void GameInput_OnMouseScrollAction(object sender, EventArgs e)
-    {
-        // Allow rotation while inspecting the object
-        if (Inspectable.Instance.GetInspectingState())
-        {
-            Inspectable.Instance.HandleRotation();
-        }
-    }
-
-    private void GameInput_OnMouseButtonAction(object sender, EventArgs e)
-    {
-        circuitPiecePosition?.SnapToCorrectPosition();
-        switches?.ToggleState();
-    }
-
-    private void GameInput_OnInteractAction(object sender, EventArgs e)
-    {
-        if (Inspectable.Instance.GetInspectingState())
-        {
-            Inspectable.Instance.StopInspect();
-            return;
-        }
-        
-        currentInteractable?.Interact();
-        
-    }
-
     private void Update()
     {
         PerformRayCast();
@@ -80,37 +44,16 @@ public class Crosshairs : MonoBehaviour
 
     void PerformRayCast()
     {
-        currentInteractable = null;
-        circuitPiecePosition = null;
-        switches = null;
-
         Ray ray = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
 
         if (Physics.Raycast(ray, out hit, interactionDistance, interactableLayerMask))
         {
             showInteractableCrosshair = true;
-
-            if (hit.transform.TryGetComponent(out IInteractable interactable))
-            {
-                currentInteractable = interactable;
-            }
-            
-            if (hit.transform.TryGetComponent(out CircuitPiecePostion circuitPiecePosition))
-            {
-                this.circuitPiecePosition = circuitPiecePosition;
-            }
-            
-            if (hit.transform.TryGetComponent(out Switches switches))
-            {
-                this.switches = switches;
-            }
+            InteractionController.Instance.HandleInteractions(hit);
         }
         else
         {
             showInteractableCrosshair = false;
-            currentInteractable = null;
-            circuitPiecePosition = null;
-            switches = null;
         }
     }
 }

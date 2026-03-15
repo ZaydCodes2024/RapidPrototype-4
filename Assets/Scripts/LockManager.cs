@@ -3,38 +3,24 @@ using System.Collections.Generic;
 
 public class LockManager : MonoBehaviour
 {
-    public static LockManager Instance;
+    public static LockManager Instance {get; private set;}
     [SerializeField] private GameObject chest;
     [SerializeField] private GameObject code;
     [SerializeField] private GameObject puzzleBox;
-    private List<Lock> unlockedLocks = new List<Lock>(); 
+    [SerializeField] private List<Lock> unlockedLocks = new List<Lock>(); 
     private int totalLocks = 3; 
-    private Lock[] allLocks;
     private void Awake()
     {
-        if (Instance == null)
-            Instance = this;
-        else
-            Destroy(gameObject);
-
-        allLocks = FindObjectsOfType<Lock>();
+       Instance = this;
     }
 
-    public bool UnlockLock(Lock lockToUnlock)
+    public void UnlockLock()
     {
-        if (InventoryManager.instance.HasItem(lockToUnlock.requiredKey))
+        if (Lock.Instance.IsLockUnlocked())
         {
-            if (!unlockedLocks.Contains(lockToUnlock))
-            {
-                unlockedLocks.Add(lockToUnlock);
-                InventoryManager.instance.RemoveItem(lockToUnlock.requiredKey);
-                CheckCompletion();
-                return true;
-            }
+            CheckCompletion();
         }
-        return false;
     }
-
     private void CheckCompletion()
     {
         if (unlockedLocks.Count == totalLocks)

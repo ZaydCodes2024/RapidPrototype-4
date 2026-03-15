@@ -3,33 +3,31 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    public static InventoryManager instance;
-    private List<GameObject> inventory = new List<GameObject>();
+    public static InventoryManager Instance {get; private set;}
+    private List<IInteractable> inventoryItem;
 
-    void Awake()
+    private void Awake()
     {
-        if (instance == null)
-            instance = this;
-        else
-            Destroy(gameObject);
+        Instance = this;
+        inventoryItem = new List<IInteractable>();
     }
 
-    public void AddItem(GameObject item)
+    public void AddItem(IInteractable interactableItem)
     {
-        if (!inventory.Contains(item))
+        if (!inventoryItem.Contains(interactableItem))
         {
-            inventory.Add(item);
+            inventoryItem.Add(interactableItem);
         }
     }
-    public bool HasItem(GameObject itemName)
+    public bool HasItem(IInteractable interactableItem)
     {
-        return inventory.Contains(itemName);
+        return inventoryItem.Contains(interactableItem);
     }
-    public void RemoveItem(GameObject itemName)
+    public void RemoveItem(IInteractable interactableItem)
     {
-        if (inventory.Contains(itemName))
+        if (inventoryItem.Contains(interactableItem))
         {
-            inventory.Remove(itemName);
+            inventoryItem.Remove(interactableItem);
         }
     }
     

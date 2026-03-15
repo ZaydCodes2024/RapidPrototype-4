@@ -1,21 +1,51 @@
 using UnityEngine;
 
-public class Lock : Interactable
+public class Lock : MonoBehaviour, IInteractable
 {
-    public GameObject requiredKey;
+    public static Lock Instance {get; private set;}
+    [SerializeField] private Key key;
     private bool isUnlocked = false;
-    public override void Interact()
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
+    public void Interact()
     {       
         
-            if (isUnlocked) return;
-            if (InventoryManager.instance.HasItem(requiredKey))
-            {
-                if (LockManager.Instance.UnlockLock(this))
-                {
-                    isUnlocked = true;
+        if (isUnlocked) return;
+
+        if (InventoryManager.Instance.HasItem(key))
+        {
+            isUnlocked = true;
+            InventoryManager.Instance.RemoveItem(key);
+            LockManager.Instance.UnlockLock();
+            key.DestroySelf();
+            gameObject.SetActive(false);
+        }
+            // if (InventoryManager.Instance.HasItem(requiredKey))
+            // {
+            //     if (LockManager.Instance.UnlockLock(this))
+            //     {
+            //         isUnlocked = true;
                     
-                    gameObject.SetActive(false); // Hide lock after unlocking
-                }
-            }    
+            //         gameObject.SetActive(false); // Hide lock after unlocking
+            //     }
+            // }    
+    }
+
+    public bool IsLockUnlocked()
+    {
+        return isUnlocked;
+    }
+    public bool IsInspectable()
+    {
+        return false;
+    }
+
+    public bool IsInventoryItem()
+    {
+        return false;
     }
 }

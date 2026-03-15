@@ -20,7 +20,7 @@ public class Crosshairs : MonoBehaviour
     private GUIStyle crosshairStyle = new GUIStyle();
     private bool showInteractableCrosshair = false;
     private RaycastHit hit;
-    private Interactable currentInteractable = null;
+    private IInteractable currentInteractable = null;
     private void OnGUI()
     {
         crosshairStyle.normal.background = showInteractableCrosshair ? interactableCrosshair : normalCrosshair;
@@ -54,13 +54,15 @@ public class Crosshairs : MonoBehaviour
         {
             showInteractableCrosshair = true;
 
-            currentInteractable = hit.collider.GetComponent<Interactable>();
+            currentInteractable = hit.collider.GetComponent<IInteractable>();
             Inspectable inspectable = hit.collider.GetComponent<Inspectable>();
             CircuitPiece circuitPiece = hit.collider.GetComponent<CircuitPiece>();
             Switches switches = hit.collider.GetComponent<Switches>();
-    
+
+            // && InventoryManager.Instance.HasItem(circuitPiece.circuitPiecePrefab
+
             // If the circuit piece is being hovered over
-            if (circuitPiece != null && InventoryManager.instance.HasItem(circuitPiece.circuitPiecePrefab))
+            if (circuitPiece != null)
             {
                 // If interact button is pressed, place the circuit piece in the correct spot
                 if (Mouse.current.leftButton.wasPressedThisFrame)   circuitPiece.SnapToCorrectPosition(); 

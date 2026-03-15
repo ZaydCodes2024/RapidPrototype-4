@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 9168685248598570027}
   - component: {fileID: 1042677070346776164}
   - component: {fileID: 8893735580611568521}
-  - component: {fileID: 8359907560368606856}
+  - component: {fileID: 2185776510473299938}
   m_Layer: 6
   m_Name: Lock
   m_TagString: Untagged
@@ -190,7 +190,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 1.9999995, z: 1.9999995}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8359907560368606856
+--- !u!114 &2185776510473299938
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -202,7 +202,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90f63ebe1b584f19afe6540a3ed7982, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Default Item
-  itemIcon: {fileID: 0}
-  isCollectible: 1
   requiredKey: {fileID: 0}

@@ -23,16 +23,7 @@ public class Lock : MonoBehaviour, IInteractable
             LockManager.Instance.UnlockLock();
             key.DestroySelf();
             gameObject.SetActive(false);
-        }
-            // if (InventoryManager.Instance.HasItem(requiredKey))
-            // {
-            //     if (LockManager.Instance.UnlockLock(this))
-            //     {
-            //         isUnlocked = true;
-                    
-            //         gameObject.SetActive(false); // Hide lock after unlocking
-            //     }
-            // }    
+        }  
     }
 
     public bool IsLockUnlocked()

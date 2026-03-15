@@ -26,10 +26,9 @@ public class Crosshairs : MonoBehaviour
     private GUIStyle crosshairStyle = new GUIStyle();
     private bool showInteractableCrosshair = false;
     private RaycastHit hit;
-    private IInteractable currentInteractable = null;
-    private CircuitPiecePostion circuitPiecePosition = null;
-    private Switches switches = null;
-    private PuzzleBox puzzleBox = null;
+    private IInteractable currentInteractable;
+    private CircuitPiecePostion circuitPiecePosition;
+    private Switches switches;
     private void OnGUI()
     {
         crosshairStyle.normal.background = showInteractableCrosshair ? interactableCrosshair : normalCrosshair;
@@ -49,18 +48,29 @@ public class Crosshairs : MonoBehaviour
 
     private void GameInput_OnMouseScrollAction(object sender, EventArgs e)
     {
-        puzzleBox?.Interact();  // Allow rotation while inspecting the object
+        // Allow rotation while inspecting the object
+        if (Inspectable.Instance.GetInspectingState())
+        {
+            Inspectable.Instance.HandleRotation();
+        }
     }
 
     private void GameInput_OnMouseButtonAction(object sender, EventArgs e)
     {
-        circuitPiecePosition?.SnapToCorrectPosition(); // If mouse button is pressed, place the circuit piece in the correct spot
+        circuitPiecePosition?.SnapToCorrectPosition();
         switches?.ToggleState();
     }
 
     private void GameInput_OnInteractAction(object sender, EventArgs e)
     {
+        if (Inspectable.Instance.GetInspectingState())
+        {
+            Inspectable.Instance.StopInspect();
+            return;
+        }
+        
         currentInteractable?.Interact();
+        
     }
 
     private void Update()
@@ -70,23 +80,29 @@ public class Crosshairs : MonoBehaviour
 
     void PerformRayCast()
     {
+        currentInteractable = null;
+        circuitPiecePosition = null;
+        switches = null;
+
         Ray ray = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
 
         if (Physics.Raycast(ray, out hit, interactionDistance, interactableLayerMask))
         {
             showInteractableCrosshair = true;
 
-            currentInteractable = hit.collider.GetComponent<IInteractable>();
-            puzzleBox = hit.collider.GetComponent<PuzzleBox>();
-            circuitPiecePosition = hit.collider.GetComponent<CircuitPiecePostion>();
-            switches = hit.collider.GetComponent<Switches>();
-
-            if (puzzleBox != null)
+            if (hit.transform.TryGetComponent(out IInteractable interactable))
             {
-                // If the player presses the 'I' key, start inspecting the object
-                if (Keyboard.current.iKey.wasPressedThisFrame)    puzzleBox.StartInspect();
-
-                if (Keyboard.current.escapeKey.wasPressedThisFrame)    puzzleBox.ExitInspect();
+                currentInteractable = interactable;
+            }
+            
+            if (hit.transform.TryGetComponent(out CircuitPiecePostion circuitPiecePosition))
+            {
+                this.circuitPiecePosition = circuitPiecePosition;
+            }
+            
+            if (hit.transform.TryGetComponent(out Switches switches))
+            {
+                this.switches = switches;
             }
         }
         else

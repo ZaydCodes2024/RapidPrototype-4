@@ -30,15 +30,14 @@ public class PuzzleBox : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        Inspectable.Instance.HandleRotation();
+        if (!Inspectable.Instance.GetInspectingState())
+        {
+            StartInspect();
+        }
     }
     public void StartInspect()
     {
-        Inspectable.Instance.StartInspect(this);
-    }
-    public void ExitInspect()
-    {
-        Inspectable.Instance.StopInspect();
+        Inspectable.Instance.StartInspect(gameObject);
     }
 
     public bool IsInventoryItem()

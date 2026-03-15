@@ -15,12 +15,12 @@ public class Inspectable : MonoBehaviour
     {
         Instance = this;
     }
-    public void StartInspect(PuzzleBox obj)
+    public void StartInspect(GameObject obj)
     {
-        if (!PuzzleBox.Instance.IsInspectable()) return;
+        if (isInspecting) return;
 
         isInspecting = true;
-        currentObject = obj.gameObject;
+        currentObject = obj;
         originalPosition = currentObject.transform.position;
         originalRotation = currentObject.transform.rotation;
 
@@ -30,6 +30,8 @@ public class Inspectable : MonoBehaviour
 
     public void StopInspect()
     {
+        if (!isInspecting) return;
+
         isInspecting = false;
         currentObject.transform.position = originalPosition;
         currentObject.transform.rotation = originalRotation;
@@ -46,6 +48,8 @@ public class Inspectable : MonoBehaviour
 
     public void HandleRotation()
     {
+        if (!isInspecting || currentObject == null) return;
+        
         // Get scroll wheel input (positive or negative) to rotate the object
         float scrollInput = GameInput.Instance.GetScrollVectorNormalized().y;
 

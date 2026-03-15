@@ -10,6 +10,7 @@ public class GameInput : MonoBehaviour
     public static GameInput Instance {get; private set;}
     public event EventHandler OnInteractAction;
     public event EventHandler OnMouseButtonAction;
+    public event EventHandler OnMouseScrollAction;
     InputActions playerInputActions;
     private void Awake()
     {
@@ -18,6 +19,12 @@ public class GameInput : MonoBehaviour
         playerInputActions.Enable();
         playerInputActions.Player.Interact.performed += Interact_Performed;
         playerInputActions.Player.MouseButton.performed += MouseButton_Performed;
+        playerInputActions.Player.Scroll.performed += Scroll_performed;
+    }
+
+    private void Scroll_performed(InputAction.CallbackContext context)
+    {
+        OnMouseScrollAction?.Invoke(this, EventArgs.Empty);
     }
 
     private void MouseButton_Performed(InputAction.CallbackContext context)

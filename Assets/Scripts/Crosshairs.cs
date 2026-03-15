@@ -29,6 +29,7 @@ public class Crosshairs : MonoBehaviour
     private IInteractable currentInteractable = null;
     private CircuitPiecePostion circuitPiecePosition = null;
     private Switches switches = null;
+    private PuzzleBox puzzleBox = null;
     private void OnGUI()
     {
         crosshairStyle.normal.background = showInteractableCrosshair ? interactableCrosshair : normalCrosshair;
@@ -43,6 +44,12 @@ public class Crosshairs : MonoBehaviour
     {
         GameInput.Instance.OnInteractAction += GameInput_OnInteractAction;
         GameInput.Instance.OnMouseButtonAction += GameInput_OnMouseButtonAction;
+        GameInput.Instance.OnMouseScrollAction += GameInput_OnMouseScrollAction;
+    }
+
+    private void GameInput_OnMouseScrollAction(object sender, EventArgs e)
+    {
+        puzzleBox?.Interact();  // Allow rotation while inspecting the object
     }
 
     private void GameInput_OnMouseButtonAction(object sender, EventArgs e)
@@ -70,19 +77,16 @@ public class Crosshairs : MonoBehaviour
             showInteractableCrosshair = true;
 
             currentInteractable = hit.collider.GetComponent<IInteractable>();
-            Inspectable inspectable = hit.collider.GetComponent<Inspectable>();
+            puzzleBox = hit.collider.GetComponent<PuzzleBox>();
             circuitPiecePosition = hit.collider.GetComponent<CircuitPiecePostion>();
             switches = hit.collider.GetComponent<Switches>();
 
-            if (inspectable != null)
+            if (puzzleBox != null)
             {
                 // If the player presses the 'I' key, start inspecting the object
-                if (Keyboard.current.iKey.wasPressedThisFrame)    inspectable.StartInspect(inspectable);
+                if (Keyboard.current.iKey.wasPressedThisFrame)    puzzleBox.StartInspect(puzzleBox);
 
-                // Allow rotation while inspecting the object
-                if (inspectable.IsInspecting())     inspectable.HandleInspectionRotation();
-
-                if (Keyboard.current.escapeKey.wasPressedThisFrame)    inspectable.StopInspect();
+                if (Keyboard.current.escapeKey.wasPressedThisFrame)    puzzleBox.StopInspect();
             }
         }
         else

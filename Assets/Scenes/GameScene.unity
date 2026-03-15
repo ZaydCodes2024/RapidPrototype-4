@@ -2479,6 +2479,7 @@ MonoBehaviour:
   normalScale: 0.5
   interactableCrosshair: {fileID: 10904, guid: 0000000000000000f000000000000000, type: 0}
   interactableScale: 1
+  interactionDistance: 4
   interactableLayerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -11340,7 +11341,6 @@ GameObject:
   - component: {fileID: 8791242652441356613}
   - component: {fileID: 8791242652441356616}
   - component: {fileID: 8791242652441356615}
-  - component: {fileID: 8791242652441356614}
   m_Layer: 6
   m_Name: PuzzleBox
   m_TagString: Untagged
@@ -12227,19 +12227,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8791242652441356614
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7388499946138501135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5384022a07a984054a22c9780fd0e9aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inspectPoint: {fileID: 253455927}
 --- !u!114 &8791242652441356615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12256,6 +12243,7 @@ MonoBehaviour:
   - {fileID: 1605278606}
   - {fileID: 1987478945}
   - {fileID: 85591026}
+  inspectPoint: {fileID: 253455927}
 --- !u!65 &8791242652441356616
 BoxCollider:
   m_ObjectHideFlags: 0

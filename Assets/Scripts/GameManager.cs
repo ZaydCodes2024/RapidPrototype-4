@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float gamePlayingtimer = 60f;
     [SerializeField] private TextMeshProUGUI timerText;
     private float waitingToStartTimer = 1f;
+    private float gameOverTimer = 3f;
     private float remainingTime;
     private enum State
     {
@@ -53,7 +54,12 @@ public class GameManager : MonoBehaviour
                 break;
 
             case State.GameOver:
-                CompleteGame();
+                gameOverTimer -= Time.deltaTime;
+                
+                if(gameOverTimer <= 0)
+                {
+                    CompleteGame();
+                }
                 break;
         }
     }

@@ -26,9 +26,27 @@ public class GameOverUI : MonoBehaviour
         });
 
         completionTime = GameManager.Instance.GetRemainingTimer();
+
+        if (completionTime < 0)
+        {
+            Hide();
+        }
+        else
+        {
+            Show();
+        }
+
         float minutes = Mathf.FloorToInt(completionTime / 60);
         float seconds = Mathf.FloorToInt(completionTime % 60);
 
         completionTimeText.text = string.Format("Completion Time: " + "{0:00}:{1:00}", minutes, seconds);
+    }
+    private void Show()
+    {
+        completionTimeText.gameObject.SetActive(true);
+    }
+    private void Hide()
+    {
+        completionTimeText.gameObject.SetActive(false);
     }
 }

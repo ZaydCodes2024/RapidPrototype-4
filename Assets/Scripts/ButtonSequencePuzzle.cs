@@ -6,6 +6,7 @@ public class ButtonSequencePuzzle : PuzzleModule
     [SerializeField] int[] correctSequence = { 1, 3, 2 , 4};
     [SerializeField] GameObject indicatorLight;
     [SerializeField] Material solvedMaterial;
+    [SerializeField] Material failedMaterial;
     private MeshRenderer indicatorRenderer;
     [SerializeField] private Color highlightColor = Color.cyan; // Color when hovered
     [SerializeField] private Color defaultColor = Color.white; // Default button color
@@ -44,6 +45,7 @@ public class ButtonSequencePuzzle : PuzzleModule
         else
         {
             index = 0; // Reset if wrong
+            indicatorRenderer.material = failedMaterial;
         }
     }
     public Color GetHighlightColor()

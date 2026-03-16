@@ -4,7 +4,7 @@ using System;
 public class PuzzleModule : MonoBehaviour
 {
     public event Action OnSolved;
-    public bool isSolved = false;
+    [SerializeField] private bool isSolved = false;
 
     public virtual void Solve()
     {
@@ -12,5 +12,10 @@ public class PuzzleModule : MonoBehaviour
 
         isSolved = true;
         OnSolved?.Invoke(); // Notify PuzzleBox that this puzzle is solved
+    }
+    
+    public bool GetSolvedState()
+    {
+        return isSolved;
     }
 }

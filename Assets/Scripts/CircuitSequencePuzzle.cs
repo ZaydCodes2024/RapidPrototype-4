@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class CircuitSequencePuzzle : PuzzleModule
 {
-    public GameObject circuitHolder;
+    [SerializeField] private GameObject circuitHolder;
     private CircuitPiece[] circuitPieces;
     [SerializeField] GameObject indicatorLight;
     [SerializeField] Material solvedMaterial;
@@ -36,10 +36,6 @@ public class CircuitSequencePuzzle : PuzzleModule
                 Solve();
                 indicatorRenderer.material = solvedMaterial;
             }
-        }
-        else
-        {
-          Debug.Log("");
         }
     }
 }

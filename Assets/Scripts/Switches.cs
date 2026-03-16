@@ -4,13 +4,13 @@ public class Switches : MonoBehaviour
 {
     private bool isOn = false;
     private Renderer switchRenderer;
-    public SwitchSequencePuzzle switchpuzzleManager;
+    [SerializeField] private SwitchSequencePuzzle switchpuzzleManager;
 
     [Header("Feedback Materials")]
-    public Material onMaterial;
-    public Material offMaterial;
+    [SerializeField] private Material onMaterial;
+    [SerializeField] private Material offMaterial;
     // Toggle the state of the switch
-    private void Start()
+    private void Awake()
     {
         switchRenderer = GetComponent<Renderer>();
         UpdateVisual();
@@ -18,7 +18,9 @@ public class Switches : MonoBehaviour
     public void ToggleState()
     {
         isOn = !isOn;
+
         UpdateVisual();
+
         if (switchpuzzleManager != null)
         {
             switchpuzzleManager.ToggleSwitch(this);

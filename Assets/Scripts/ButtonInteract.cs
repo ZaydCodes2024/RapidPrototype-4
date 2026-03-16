@@ -1,38 +1,50 @@
 using UnityEngine;
-class ButtonInteract : MonoBehaviour
+public class ButtonInteract : MonoBehaviour
+{
+    [SerializeField] private int buttonID;
+    [SerializeField] private ButtonSequencePuzzle puzzle;
+    [SerializeField] private MeshRenderer buttonRenderer;
+    [SerializeField] private Material defaultMaterial;
+    private Material highlightMaterial;
+
+    private void Awake()
     {
-        public int buttonID;
-        public ButtonSequencePuzzle puzzle;
-        public MeshRenderer buttonRenderer;
-        public Material defaultMaterial;
-        private Material highlightMaterial;
-
-        void Start()
+        buttonRenderer.material = defaultMaterial;
+    }
+    private void Start()
+    {
+        // Create a highlight material dynamically
+        highlightMaterial = new Material(defaultMaterial);
+        highlightMaterial.color = puzzle.GetHighlightColor();
+    }
+    private void OnMouseDown()
+    {
+        if (puzzle != null)
         {
-            // Create a highlight material dynamically
-            highlightMaterial = new Material(defaultMaterial);
-            highlightMaterial.color = puzzle.highlightColor;
-        }
-        void OnMouseDown()
-        {
-            if (puzzle != null)
-            {
-                puzzle.PressButton(buttonID);
-            }
-        }
-        void OnMouseEnter()
-        {
-            if (buttonRenderer != null)
-            {
-                buttonRenderer.material = highlightMaterial; // Change color on hover
-            }
-        }
-
-        void OnMouseExit()
-        {
-            if (buttonRenderer != null)
-            {
-                buttonRenderer.material = defaultMaterial; // Reset color when not hovered
-            }
+            puzzle.PressButton(buttonID);
         }
     }
+    private void OnMouseEnter()
+    {
+        if (buttonRenderer != null)
+        {
+            buttonRenderer.material = highlightMaterial; // Change color on hover
+        }
+    }
+
+    private void OnMouseExit()
+    {
+        if (buttonRenderer != null)
+        {
+            buttonRenderer.material = defaultMaterial; // Reset color when not hovered
+        }
+    }
+    public int GetButtonID()
+    {
+        return buttonID;
+    }
+    public void SetButtonID(int buttonID)
+    {
+        this.buttonID = buttonID;
+    }
+}

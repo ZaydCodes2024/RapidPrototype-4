@@ -6,11 +6,7 @@ public class CircuitPiecePostion : MonoBehaviour
 {
     [SerializeField] private Transform correctPosition; 
     [SerializeField] private CircuitPiece circuitPiecePrefab;
-    private CircuitSequencePuzzle circuitPuzzle;
-    private void Awake()
-    {
-        circuitPuzzle = FindObjectOfType<CircuitSequencePuzzle>();
-    }
+    [SerializeField] private CircuitSequencePuzzle circuitPuzzle;
 
     // Snaps the piece to the correct position on the circuit
     public void SnapToCorrectPosition()

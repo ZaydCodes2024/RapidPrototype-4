@@ -3,8 +3,8 @@ using UnityEngine;
 public class PuzzleBox : MonoBehaviour, IInteractable
 {
     public static PuzzleBox Instance {get; private set;}
-    public PuzzleModule[] puzzles; 
-    private int solvedPuzzles = 0;
+    [SerializeField] private PuzzleModule[] puzzleModules; 
+    private int solvedPuzzles;
 
     private void Awake()
     {
@@ -12,7 +12,7 @@ public class PuzzleBox : MonoBehaviour, IInteractable
     }
     private void Start()
     {
-        foreach (var puzzle in puzzles)
+        foreach (var puzzle in puzzleModules)
         {
             puzzle.OnSolved += CheckCompletion;
         }
@@ -22,7 +22,7 @@ public class PuzzleBox : MonoBehaviour, IInteractable
     {
         solvedPuzzles++;
 
-        if (solvedPuzzles >= puzzles.Length)
+        if (solvedPuzzles >= puzzleModules.Length)
         {
             GameManager.Instance.CompleteGame();
         }

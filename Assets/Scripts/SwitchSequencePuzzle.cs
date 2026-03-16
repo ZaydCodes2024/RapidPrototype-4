@@ -6,7 +6,6 @@ public class SwitchSequencePuzzle : PuzzleModule
     [Header("Switches")]
     public Switches[] switches;
     private bool[] solutionPattern;
-    private bool puzzleSolved = false;
     [SerializeField] GameObject indicatorLight;
     [SerializeField] Material solvedMaterial;
     [SerializeField] TextMeshPro solutionText;
@@ -62,12 +61,10 @@ public class SwitchSequencePuzzle : PuzzleModule
             }
         }
 
-        if (!puzzleSolved)
-        {
-            puzzleSolved = true;    
+        if (!GetSolvedState())
+        {   
             Solve();
             indicatorRenderer.material = solvedMaterial;
-           
         }
     }
 }

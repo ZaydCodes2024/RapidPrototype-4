@@ -15,4 +15,9 @@ public class CircuitPiece : MonoBehaviour, IInteractable
     {
         return true;
     }
+
+    public int ItemCount()
+    {
+        return InventoryManager.Instance.CountItem(this);
+    }
 }

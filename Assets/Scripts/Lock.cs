@@ -35,4 +35,9 @@ public class Lock : MonoBehaviour, IInteractable
     {
         return false;
     }
+
+    public int ItemCount()
+    {
+        return -1;
+    }
 }

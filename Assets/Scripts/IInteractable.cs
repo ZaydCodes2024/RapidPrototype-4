@@ -6,4 +6,5 @@ public interface IInteractable
 {
    public void Interact();
    public bool IsInventoryItem();
+   public int ItemCount();
 }

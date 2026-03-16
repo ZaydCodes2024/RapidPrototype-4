@@ -21,4 +21,9 @@ public class Key : MonoBehaviour, IInteractable
     {
         Destroy(gameObject);
     }
+
+    public int ItemCount()
+    {
+        return InventoryManager.Instance.CountItem(this);
+    }
 }

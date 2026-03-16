@@ -6,41 +6,68 @@ using TMPro;
 using UnityEngine.SceneManagement; 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
-    [SerializeField] private float timer = 60f;
-    private bool isRunning = true;
+    public static GameManager Instance {get; private set;}
+    [SerializeField] private float gamePlayingtimer = 60f;
     [SerializeField] private TextMeshProUGUI timerText;
-    private float gameOverDelay = 3f;
+    private float waitingToStartTimer = 1f;
+    private float remainingTime;
+    private enum State
+    {
+        WaitingToStart, GamePlaying, GameOver
+    }
+    private State state;
     private void Awake()
     {
+        state = State.WaitingToStart;
         Instance = this;
     }
-
-    void Update()
+    private void Update()
     {
-        if (isRunning)
+        switch (state)
         {
-            timer -= Time.deltaTime;
-            if (timer <= 0)
-            {
-                timer = 0;
-                isRunning = false;
+            case State.WaitingToStart:
+                waitingToStartTimer -= Time.deltaTime;
+
+                if (waitingToStartTimer <= 0)
+                {
+                    state = State.GamePlaying;
+                }
+                break;
+
+            case State.GamePlaying:
+                
+                gamePlayingtimer -= Time.deltaTime;
+
+                if (gamePlayingtimer <= 0)
+                {
+                    Destroy(timerText);
+                    state = State.GameOver;
+                }
+                
+                remainingTime = gamePlayingtimer;
+                float minutes = Mathf.FloorToInt(gamePlayingtimer / 60);
+                float seconds = Mathf.FloorToInt(gamePlayingtimer % 60);
+
+                timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+
+                break;
+
+            case State.GameOver:
                 CompleteGame();
-            }
-            float minutes = Mathf.FloorToInt(timer / 60);
-            float seconds = Mathf.FloorToInt(timer % 60);
-            timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+                break;
         }
     }
 
+    public float GetRemainingTimer()
+    {
+        return remainingTime;
+    }
+    public bool IsGamePlaying()
+    {
+        return state == State.GamePlaying;
+    }
     public void CompleteGame()
     {
-        isRunning = false;
-        StartCoroutine(GameOver());
-    }
-    private IEnumerator GameOver()
-    {
-        yield return new WaitForSeconds(gameOverDelay);
-        SceneManager.LoadScene("GameOverScene");
+        Loader.Load(Loader.Scene.GameOverScene);
     }
 }

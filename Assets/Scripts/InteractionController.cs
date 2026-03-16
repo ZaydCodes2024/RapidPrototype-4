@@ -37,6 +37,8 @@ public class InteractionController : MonoBehaviour
 
     private void GameInput_OnInteractAction(object sender, EventArgs e)
     {
+        if (!GameManager.Instance.IsGamePlaying())  return;
+        
         if (Inspectable.Instance != null && Inspectable.Instance.GetInspectingState())
         {
             Inspectable.Instance.StopInspect();

@@ -25,7 +25,7 @@ public class GameOverUI : MonoBehaviour
             Loader.Load(Loader.Scene.MainMenuScene);
         });
 
-        completionTime = GameManager.Instance.GetRemainingTimer();
+        completionTime = GameManager.Instance.GetCompletionTime();
 
         if (completionTime < 0)
         {

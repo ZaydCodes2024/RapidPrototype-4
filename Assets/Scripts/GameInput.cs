@@ -11,6 +11,7 @@ public class GameInput : MonoBehaviour
     public event EventHandler OnInteractAction;
     public event EventHandler OnMouseButtonAction;
     public event EventHandler OnMouseScrollAction;
+    public event EventHandler OnCrouchAction;
     InputActions playerInputActions;
     private void Awake()
     {
@@ -20,6 +21,12 @@ public class GameInput : MonoBehaviour
         playerInputActions.Player.Interact.performed += Interact_Performed;
         playerInputActions.Player.MouseButton.performed += MouseButton_Performed;
         playerInputActions.Player.Scroll.performed += Scroll_performed;
+        playerInputActions.Player.Crouch.performed += Crouch_Performed;
+    }
+
+    private void Crouch_Performed(InputAction.CallbackContext context)
+    {
+        OnCrouchAction?.Invoke(this, EventArgs.Empty);
     }
 
     private void Scroll_performed(InputAction.CallbackContext context)

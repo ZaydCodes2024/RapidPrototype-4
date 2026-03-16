@@ -7,11 +7,12 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance {get; private set;}
-    [SerializeField] private float gamePlayingtimer = 60f;
+    [SerializeField] private float countdowntimer;
+    private float gamePlayingtimer;
     [SerializeField] private TextMeshProUGUI timerText;
     private float waitingToStartTimer = 1f;
     private float gameOverTimer = 3f;
-    private float remainingTime;
+    private float completionTime;
     private enum State
     {
         WaitingToStart, GamePlaying, GameOver
@@ -37,17 +38,18 @@ public class GameManager : MonoBehaviour
 
             case State.GamePlaying:
                 
-                gamePlayingtimer -= Time.deltaTime;
+                gamePlayingtimer += Time.deltaTime;
+                countdowntimer -= Time.deltaTime;
 
-                if (gamePlayingtimer <= 0)
+                if (countdowntimer < 0)
                 {
                     Destroy(timerText);
                     state = State.GameOver;
                 }
                 
-                remainingTime = gamePlayingtimer;
-                float minutes = Mathf.FloorToInt(gamePlayingtimer / 60);
-                float seconds = Mathf.FloorToInt(gamePlayingtimer % 60);
+                completionTime = gamePlayingtimer;
+                float minutes = Mathf.FloorToInt(countdowntimer / 60);
+                float seconds = Mathf.FloorToInt(countdowntimer % 60);
 
                 timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
 
@@ -64,9 +66,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public float GetRemainingTimer()
+    public float GetCompletionTime()
     {
-        return remainingTime;
+        return completionTime;
     }
     public bool IsGamePlaying()
     {

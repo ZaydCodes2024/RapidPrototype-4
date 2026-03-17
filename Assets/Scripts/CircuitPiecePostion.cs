@@ -12,7 +12,7 @@ public class CircuitPiecePostion : MonoBehaviour
     public void SnapToCorrectPosition()
     {
         
-        if (correctPosition != null && InventoryManager.Instance.HasItem(circuitPiecePrefab))
+        if (correctPosition != null && InventoryManager.Instance.HasItem(circuitPiecePrefab.GetInventoryItemSO()))
         {   
             circuitPiecePrefab.transform.SetParent(correctPosition);
             
@@ -23,7 +23,7 @@ public class CircuitPiecePostion : MonoBehaviour
 
             circuitPiecePrefab.gameObject.SetActive(true);
             Debug.Log("Placed: " + circuitPiecePrefab.name);
-            InventoryManager.Instance.RemoveItem(circuitPiecePrefab); // Remove from inventory after placing
+            InventoryManager.Instance.RemoveItem(circuitPiecePrefab.GetInventoryItemSO()); // Remove from inventory after placing
 
             circuitPuzzle.CorrectMove();  // Notify puzzle that the move is correct
 

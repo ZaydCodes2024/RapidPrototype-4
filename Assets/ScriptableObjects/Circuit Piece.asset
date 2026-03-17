@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31fd2d23e9c594c8fb18ae5d4723e1d7, type: 3}
-  m_Name: greenKeyItemSO
+  m_Script: {fileID: 11500000, guid: 2f4d80f5fe7f7471d89a6dc0da2de239, type: 3}
+  m_Name: Circuit Piece
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 0}
-  itemName: Green Key
-  isStackable: 0
+  itemImage: {fileID: 21300000, guid: 4b984665acc3e4c01bda95466643fcce, type: 3}
+  itemName: Circuit Piece
+  isStackable: 1

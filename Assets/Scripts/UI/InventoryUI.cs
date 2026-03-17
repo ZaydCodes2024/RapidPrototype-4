@@ -37,11 +37,15 @@ public class InventoryUI : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        foreach (IInteractable interactable in InventoryManager.Instance.GetInteractablesList())
+        foreach (var inventoryItem in InventoryManager.Instance.GetInventoryItemList())
         {
+            var itemData = inventoryItem.Key;
+            var count = inventoryItem.Value;
+
             Transform itemTransform = Instantiate(template,container);
             itemTransform.gameObject.SetActive(true);
-            itemTransform.GetComponent<InventoryManagerSingleUI>().SetItemCount(interactable);
+
+            itemTransform.GetComponent<InventoryManagerSingleUI>().SetItemData(itemData, count);
         }
     }
     private void Show()

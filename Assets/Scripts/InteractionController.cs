@@ -22,6 +22,8 @@ public class InteractionController : MonoBehaviour
 
     private void GameInput_OnMouseScrollAction(object sender, EventArgs e)
     {
+        if (Inspectable.Instance == null) return;
+        
         // Allow rotation while inspecting the object
         if (Inspectable.Instance.GetInspectingState())
         {

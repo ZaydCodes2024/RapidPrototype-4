@@ -16,10 +16,10 @@ public class Lock : MonoBehaviour, IInteractable
         
         if (isUnlocked) return;
 
-        if (InventoryManager.Instance.HasItem(key))
+        if (InventoryManager.Instance.HasItem(key.GetInventoryItemSO()))
         {
             isUnlocked = true;
-            InventoryManager.Instance.RemoveItem(key);
+            InventoryManager.Instance.RemoveItem(key.GetInventoryItemSO());
             LockManager.Instance.UnlockLock();
             key.DestroySelf();
             gameObject.SetActive(false);
@@ -34,10 +34,5 @@ public class Lock : MonoBehaviour, IInteractable
     public bool IsInventoryItem()
     {
         return false;
-    }
-
-    public int ItemCount()
-    {
-        return -1;
     }
 }

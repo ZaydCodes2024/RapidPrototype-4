@@ -176,6 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7165172232335439749}
   - component: {fileID: 3205426502872185603}
+  - component: {fileID: 6863240596962338864}
   m_Layer: 0
   m_Name: CircuitPiece
   m_TagString: Untagged
@@ -221,3 +222,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.2741561, y: 0.463943, z: 0.26373672}
   m_Center: {x: -0.0042612553, y: 0.2680285, z: -0.01086998}
+--- !u!114 &6863240596962338864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7281981041991490411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ded4089e1ecbe4a9e8f53802d5d49824, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryItemSO: {fileID: 11400000, guid: 5d3afb848ec9d4bbf9aebbf1f8fe0f22, type: 2}

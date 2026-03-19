@@ -6415,6 +6415,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countdowntimer: 601
+  puzzleModules:
+  - {fileID: 1605278606}
+  - {fileID: 1987478945}
+  - {fileID: 85591026}
   timerText: {fileID: 1046944224}
 --- !u!4 &1389889335
 Transform:
@@ -13875,10 +13879,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96dc79b2b9b6a4237944df7496d36b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puzzleModules:
-  - {fileID: 1605278606}
-  - {fileID: 1987478945}
-  - {fileID: 85591026}
 --- !u!65 &8791242652441356616
 BoxCollider:
   m_ObjectHideFlags: 0

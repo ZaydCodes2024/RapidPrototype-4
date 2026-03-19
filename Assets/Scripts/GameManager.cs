@@ -3,13 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.SceneManagement; 
+using UnityEngine.SceneManagement;
+using System;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance {get; private set;}
     [SerializeField] private float countdowntimer;
+    [SerializeField] private PuzzleModule[] puzzleModules;
+    [SerializeField] private TextMeshProUGUI timerText; 
+    private int solvedPuzzles;
     private float gamePlayingtimer;
-    [SerializeField] private TextMeshProUGUI timerText;
     private float waitingToStartTimer = 1f;
     private float gameOverTimer = 3f;
     private float completionTime;
@@ -23,6 +26,23 @@ public class GameManager : MonoBehaviour
         state = State.WaitingToStart;
         Instance = this;
     }
+    private void Start()
+    {
+        foreach (PuzzleModule puzzle in puzzleModules)
+        {
+            puzzle.OnSolved += CheckCompletion;
+        }
+    }
+    private void CheckCompletion(object sender, EventArgs e)
+    {
+        solvedPuzzles++;
+
+        if (solvedPuzzles >= puzzleModules.Length)
+        {
+            state = State.GameOver;
+        }
+    }
+
     private void Update()
     {
         switch (state)
@@ -56,16 +76,10 @@ public class GameManager : MonoBehaviour
                 break;
 
             case State.GameOver:
-                gameOverTimer -= Time.deltaTime;
-                
-                if(gameOverTimer <= 0)
-                {
-                    CompleteGame();
-                }
+                CompleteGame();
                 break;
         }
     }
-
     public float GetCompletionTime()
     {
         return completionTime;
@@ -74,8 +88,11 @@ public class GameManager : MonoBehaviour
     {
         return state == State.GamePlaying;
     }
-    public void CompleteGame()
+    private void CompleteGame()
     {
-        Loader.Load(Loader.Scene.GameOverScene);
+        gameOverTimer -= Time.deltaTime;
+
+        if (gameOverTimer <= 0)
+            Loader.Load(Loader.Scene.GameOverScene);
     }
 }

@@ -22,7 +22,6 @@ public class CircuitPiecePostion : MonoBehaviour
             circuitPiecePrefab.transform.localScale = Vector3.one;
 
             circuitPiecePrefab.gameObject.SetActive(true);
-            Debug.Log("Placed: " + circuitPiecePrefab.name);
             InventoryManager.Instance.RemoveItem(circuitPiecePrefab.GetInventoryItemSO()); // Remove from inventory after placing
 
             circuitPuzzle.CorrectMove();  // Notify puzzle that the move is correct

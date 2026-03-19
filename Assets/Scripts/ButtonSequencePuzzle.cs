@@ -1,9 +1,11 @@
 using UnityEngine;
-
+using System;
+using TMPro;
 public class ButtonSequencePuzzle : PuzzleModule
 {
     [SerializeField] private GameObject[] buttons;
-    [SerializeField] int[] correctSequence = { 1, 3, 2 , 4};
+    [SerializeField] private int[] correctSequence;
+    [SerializeField] TextMeshPro correctSequenceText;
     [SerializeField] GameObject indicatorLight;
     [SerializeField] Material solvedMaterial;
     [SerializeField] Material failedMaterial;
@@ -11,11 +13,26 @@ public class ButtonSequencePuzzle : PuzzleModule
     [SerializeField] private Color highlightColor = Color.cyan; // Color when hovered
     [SerializeField] private Color defaultColor = Color.white; // Default button color
     private int index;
-
+    int buttonInteractId;
     private void Awake()
     {
+      RandomizeSequence();
       AssignButtonIDs();
       indicatorRenderer = indicatorLight.GetComponent<MeshRenderer>();
+    }
+    private void RandomizeSequence()
+    {
+        for (int i = 0; i < correctSequence.Length; i++)
+        {
+            correctSequence[i] = UnityEngine.Random.Range(1,5);
+        }
+
+        string correctSequenceString = string.Join("", correctSequence);
+
+        if (correctSequenceText != null)
+        {
+            correctSequenceText.text = correctSequenceString;
+        }
     }
     private void AssignButtonIDs()
     {
@@ -23,7 +40,7 @@ public class ButtonSequencePuzzle : PuzzleModule
         {
             ButtonInteract buttonInteract = buttons[i].GetComponent<ButtonInteract>();
 
-            int buttonInteractId = buttonInteract.GetButtonID();
+            buttonInteractId = buttonInteract.GetButtonID();
             
             buttonInteractId = i + 1;
             buttonInteract.SetButtonID(buttonInteractId);

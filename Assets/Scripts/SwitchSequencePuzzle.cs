@@ -28,7 +28,7 @@ public class SwitchSequencePuzzle : PuzzleModule
 
     private void GenerateSolution()
     {
-         solutionPattern = new bool[switches.Length];
+        solutionPattern = new bool[switches.Length];
 
         for (int i = 0; i < solutionPattern.Length; i++)
         {

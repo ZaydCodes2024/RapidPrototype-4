@@ -1,31 +1,28 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Inspectable : MonoBehaviour
 {
-    public static Inspectable Instance {get; private set;}
-    private GameObject currentObject;
-    [SerializeField] private Transform inspectPoint;
+    public static event EventHandler OnEnterInspect;
+    public static event EventHandler OnExitInspect;
     private Vector3 originalPosition;
     private Quaternion originalRotation;
     private float rotationSpeed = 15f;
     private bool isInspecting; 
-    private void Awake()
-    {
-        Instance = this;
-    }
-    public void StartInspect(GameObject obj)
+    public void StartInspect(Transform inspectPoint)
     {
         if (isInspecting) return;
 
         isInspecting = true;
-        currentObject = obj;
-        originalPosition = currentObject.transform.position;
-        originalRotation = currentObject.transform.rotation;
 
-        currentObject.transform.position = inspectPoint.position;
-        currentObject.transform.rotation = inspectPoint.rotation; 
+        originalPosition = transform.position;
+        originalRotation = transform.rotation;
+
+        transform.position = inspectPoint.position;
+        transform.rotation = inspectPoint.rotation; 
+        OnEnterInspect?.Invoke(this, EventArgs.Empty);
     }
 
     public void StopInspect()
@@ -33,22 +30,23 @@ public class Inspectable : MonoBehaviour
         if (!isInspecting) return;
 
         isInspecting = false;
-        currentObject.transform.position = originalPosition;
-        currentObject.transform.rotation = originalRotation;
-        currentObject = null;
+
+        transform.position = originalPosition;
+        transform.rotation = originalRotation;
+        OnExitInspect?.Invoke(this, EventArgs.Empty);
     }
 
     private void RotateObject(float rotX, float rotY)
     {
         // Rotating around the X-axis (left/right)
-        currentObject.transform.Rotate(Vector3.up, rotX, Space.World);
+        transform.Rotate(Vector3.up, rotX, Space.World);
         // Rotating around the Y-axis (up/down) — you can adjust this if you need different rotation behavior
-        currentObject.transform.Rotate(Vector3.right, rotY, Space.World);
+        transform.Rotate(Vector3.right, rotY, Space.World);
     }
 
     public void HandleRotation()
     {
-        if (!isInspecting || currentObject == null) return;
+        if (!isInspecting) return;
         
         // Get scroll wheel input (positive or negative) to rotate the object
         float scrollInput = GameInput.Instance.GetScrollVectorNormalized().y;

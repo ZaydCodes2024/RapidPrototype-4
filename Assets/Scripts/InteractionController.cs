@@ -6,7 +6,11 @@ using UnityEngine;
 public class InteractionController : MonoBehaviour
 {
     public static InteractionController Instance {get; private set;}
+    [SerializeField] private Transform inspectPoint;
+    public event EventHandler OnInteractDetected;
+    public event EventHandler OnInteractUndetected;
     private IInteractable currentInteractable;
+    private Inspectable currentInspectable;
     private CircuitPiecePostion circuitPiecePosition;
     private Switches switches;
     private void Awake()
@@ -20,14 +24,32 @@ public class InteractionController : MonoBehaviour
         GameInput.Instance.OnMouseScrollAction += GameInput_OnMouseScrollAction;
     }
 
+    public void TryInspect(GameObject target)
+    {
+        Inspectable inspectable = target.GetComponent<Inspectable>();
+        if (inspectable == null) return;
+
+        currentInspectable = inspectable;
+        currentInspectable.StartInspect(inspectPoint);
+    }
+    public void StopInspect()
+    {
+        if (currentInspectable == null) return;
+
+        currentInspectable.StopInspect();
+        currentInspectable = null;
+    }
+
+    public bool IsInspecting()
+    {
+        return currentInspectable != null && currentInspectable.GetInspectingState();
+    }
     private void GameInput_OnMouseScrollAction(object sender, EventArgs e)
     {
-        if (Inspectable.Instance == null) return;
-        
-        // Allow rotation while inspecting the object
-        if (Inspectable.Instance.GetInspectingState())
+
+        if (IsInspecting())
         {
-            Inspectable.Instance.HandleRotation();
+            currentInspectable?.HandleRotation();
         }
     }
 
@@ -41,14 +63,13 @@ public class InteractionController : MonoBehaviour
     {
         if (!GameManager.Instance.IsGamePlaying())  return;
         
-        if (Inspectable.Instance != null && Inspectable.Instance.GetInspectingState())
+        if (IsInspecting())
         {
-            Inspectable.Instance.StopInspect();
+            StopInspect();
             return;
         }
 
         currentInteractable?.Interact();
-
     }
     public void HandleInteractions(RaycastHit hit)
     {
@@ -59,6 +80,7 @@ public class InteractionController : MonoBehaviour
         if (hit.transform.TryGetComponent(out IInteractable interactable))
         {
             currentInteractable = interactable;
+            OnInteractDetected?.Invoke(this, EventArgs.Empty);
         }
 
         if (hit.transform.TryGetComponent(out CircuitPiecePostion circuitPiecePosition))
@@ -76,5 +98,6 @@ public class InteractionController : MonoBehaviour
         currentInteractable = null;
         circuitPiecePosition = null;
         switches = null;
+        OnInteractUndetected?.Invoke(this,EventArgs.Empty);
     }
 }

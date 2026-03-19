@@ -13,6 +13,10 @@ public class GameInput : MonoBehaviour
     public event EventHandler OnMouseScrollAction;
     public event EventHandler OnCrouchAction;
     InputActions playerInputActions;
+    public enum Binding
+    {
+        Interact
+    }
     private void Awake()
     {
         Instance = this;
@@ -60,4 +64,13 @@ public class GameInput : MonoBehaviour
         return inputVector;
     }
 
+    public string GetBindingText(Binding binding)
+    {
+        switch (binding)
+        {
+            default:
+            case Binding.Interact:
+            return playerInputActions.Player.Interact.GetBindingDisplayString(0, InputBinding.DisplayStringOptions.DontIncludeInteractions);
+        }
+    }
 }

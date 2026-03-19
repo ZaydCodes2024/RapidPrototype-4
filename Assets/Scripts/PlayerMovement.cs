@@ -20,14 +20,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void GameInput_OnCrouchAction(object sender, EventArgs e)
     {
-        if (Inspectable.Instance != null && Inspectable.Instance.GetInspectingState())  return;
+        // if (Inspectable.Instance != null && Inspectable.Instance.GetInspectingState())  return;
 
         isCrouching = !isCrouching;
     }
 
     public void HandleMovement()
     {
-        if (Inspectable.Instance != null && Inspectable.Instance.GetInspectingState())     return;
+        if (InteractionController.Instance.IsInspecting())     return;
 
         Vector2 inputVector = GameInput.Instance.GetMovementVectorNormalized();
 

@@ -7,7 +7,6 @@ public class CircuitPiece : MonoBehaviour, IInteractable
         if (IsInventoryItem())
         {
             InventoryManager.Instance.AddItem(inventoryItemSO);
-            Debug.Log("Collected: " + gameObject.name);
             gameObject.SetActive(false);
         }
     }

@@ -8,25 +8,22 @@
 
 Rapid Game Prototype  - 4
 
-Initial Game Idea
+Game Idea
 * Game like Keep talking and Nobody explodes - Interacting with a box
 * Single Player
 * FPS Controller
-* Different color keys
-* Collection of keys
-* Three locks on the puzzle box
-* Collect all the keys for the puzzle box to for the final puzzle
 * Solve the final Puzzle to win
 * Time Limit
 * Different scenes for main menu, level end.
-* Final puzzle can be:
-    -  Symbol Matching – The box displays a random set of symbols, and you must arrange the collected pieces in the correct order to match a hidden clue in the room.
+* Puzzle Ideas:
     - Circuit Connection – The inside of the box reveals a broken circuit, and you must rotate and connect pieces correctly to power it up.
-    - Number Sequence – Simon says
+    - Number Sequence - Hidden Code
     - Word Cipher – The final code is hidden in notes found around the room, requiring you to decode a phrase or combination to activate the box.
+    - Light Switches - Toggle switches in the correct order
 
 Assets
 * https://mehrasaur.itch.io/3d-furnitre-pack
+* https://assetstore.unity.com/packages/2d/gui/icons/skymon-icon-pack-free-282424#description
 
 
 

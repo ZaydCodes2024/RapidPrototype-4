@@ -28,6 +28,14 @@ public class GameInput : MonoBehaviour
         playerInputActions.Player.Crouch.performed += Crouch_Performed;
     }
 
+    private void OnDestroy()
+    {
+        playerInputActions.Player.Interact.performed -= Interact_Performed;
+        playerInputActions.Player.MouseButton.performed -= MouseButton_Performed;
+        playerInputActions.Player.Scroll.performed -= Scroll_performed;
+        playerInputActions.Player.Crouch.performed -= Crouch_Performed;
+        playerInputActions.Dispose();
+    }
     private void Crouch_Performed(InputAction.CallbackContext context)
     {
         OnCrouchAction?.Invoke(this, EventArgs.Empty);

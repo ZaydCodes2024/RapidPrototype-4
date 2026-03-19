@@ -7,6 +7,11 @@ public class Inspectable : MonoBehaviour
 {
     public static event EventHandler OnEnterInspect;
     public static event EventHandler OnExitInspect;
+    public static void ResetStaticData()
+    {
+        OnEnterInspect = null;
+        OnExitInspect = null;
+    }
     private Vector3 originalPosition;
     private Quaternion originalRotation;
     private float rotationSpeed = 15f;

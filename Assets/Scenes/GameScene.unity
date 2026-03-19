@@ -544,7 +544,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db6930bb6b7b64e0d80ed7f7f45866ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSolved: 0
   switches:
   - {fileID: 6319491360918128785}
   - {fileID: 7039239077037705384}
@@ -3026,7 +3025,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 655019550}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
@@ -3035,7 +3034,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 12
+  m_Spacing: 33
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -7356,7 +7355,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1571f6c031b434f9c0b09f12624e18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSolved: 0
   buttons:
   - {fileID: 6108103498585863752}
   - {fileID: 1322534845316856176}
@@ -8404,6 +8402,50 @@ MonoBehaviour:
   correctPosition: {fileID: 1972380992}
   circuitPiecePrefab: {fileID: 1999026074}
   circuitPuzzle: {fileID: 1987478945}
+--- !u!1 &1982876247
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1982876249}
+  - component: {fileID: 1982876248}
+  m_Layer: 0
+  m_Name: ResetStaticData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1982876248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982876247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74dea58fcc7fb416e8ba527777a18411, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1982876249
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982876247}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.837384, y: -0.56524706, z: 26.991428}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1987478944
 GameObject:
   m_ObjectHideFlags: 0
@@ -8433,7 +8475,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cd14d659d9164da09a70a3fd020450c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSolved: 0
   circuitHolder: {fileID: 1414217628}
   indicatorLight: {fileID: 1298084624813834429}
   solvedMaterial: {fileID: 2100000, guid: b603694cb6674486faf9328e7556266d, type: 2}
@@ -14056,3 +14097,4 @@ SceneRoots:
   - {fileID: 1495400824}
   - {fileID: 858653371}
   - {fileID: 2086262847}
+  - {fileID: 1982876249}

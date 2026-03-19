@@ -6769,7 +6769,9 @@ GameObject:
   - component: {fileID: 1601258914}
   - component: {fileID: 1601258913}
   - component: {fileID: 1601258919}
+  - component: {fileID: 1601258922}
   - component: {fileID: 1601258920}
+  - component: {fileID: 1601258921}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -6880,10 +6882,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 311e81dd5c88b4cfc9aace12176bc211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 5
-  runSpeed: 10
   cameraTransform: {fileID: 628304244}
-  mouseSensitivity: 2
 --- !u!114 &1601258920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6896,6 +6895,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee43c1414d6bc47d4b541c0eca1ef8da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1601258921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601258911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49e9dbad4049b4e059f8209a82c8e9b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseSensitivity: 2
+--- !u!114 &1601258922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601258911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 382497d681f7e4975a6c52c251d0e6b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSpeed: 5
+  runSpeed: 10
 --- !u!1 &1605278605
 GameObject:
   m_ObjectHideFlags: 0

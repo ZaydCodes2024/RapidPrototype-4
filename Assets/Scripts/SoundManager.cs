@@ -12,10 +12,12 @@ public class SoundManager : MonoBehaviour
     [SerializeField] List<Switches> switchesList;
     [SerializeField] List<Lock> lockList;
     private float volume = 1f;
+    private const string PLAYER_PREFS_SFX_VOLUME = "SoundEffectsVolume";
     public static SoundManager Instance {get; private set;}
     private void Awake()
     {
         Instance = this;
+        volume = PlayerPrefs.GetFloat(PLAYER_PREFS_SFX_VOLUME, 1f);
     }
     private void Start()
     {
@@ -46,37 +48,37 @@ public class SoundManager : MonoBehaviour
     private void Lock_OnLockUnlocked(object sender, System.EventArgs e)
     {
         Lock locks = sender as Lock;
-        PlaySound(audioClipRefSO.lockUnlock, locks.transform.position);
+        PlaySound(audioClipRefSO.lockUnlock, locks.transform.position, volume);
     }
 
     private void Switches_OnSwitchPress(object sender, System.EventArgs e)
     {
         Switches switches = sender as Switches;
-        PlaySound(audioClipRefSO.buttonPress, switches.transform.position);
+        PlaySound(audioClipRefSO.buttonPress, switches.transform.position, volume);
     }
 
     private void CircuitPiecePosition_OnCircuitPiecePlace(object sender, System.EventArgs e)
     {
         CircuitPiecePostion circuitPiecePostion = sender as CircuitPiecePostion;
-        PlaySound(audioClipRefSO.circuitPiecePlace, circuitPiecePostion.transform.position);
+        PlaySound(audioClipRefSO.circuitPiecePlace, circuitPiecePostion.transform.position, volume);
     }
 
     private void ButtonInteract_OnButtonPressed(object sender, System.EventArgs e)
     {
         ButtonInteract buttonInteract = sender as ButtonInteract;
-        PlaySound(audioClipRefSO.buttonPress, buttonInteract.transform.position);
+        PlaySound(audioClipRefSO.buttonPress, buttonInteract.transform.position, volume);
     }
 
     private void PlayerMovement_OnCrouchDown(object sender, System.EventArgs e)
     {
         PlayerMovement player = sender as PlayerMovement;
-        PlaySound(audioClipRefSO.crouchDown, player.transform.position);
+        PlaySound(audioClipRefSO.crouchDown, player.transform.position, volume);
     }
 
     private void PlayerMovement_OnCrouchUp(object sender, System.EventArgs e)
     {
         PlayerMovement player = sender as PlayerMovement;
-        PlaySound(audioClipRefSO.crouchUp, player.transform.position);
+        PlaySound(audioClipRefSO.crouchUp, player.transform.position, volume);
     }
 
     private void PlaySound(AudioClip audioClip, Vector3 position, float volume = 1)
@@ -102,5 +104,19 @@ public class SoundManager : MonoBehaviour
     public void PlayItemPickupSound(Vector3 position, float volumeMultiplier)
     {
         PlaySound(audioClipRefSO.itemPickup, position, volumeMultiplier * volume);
+    }
+    public void ChangeVolume()
+    {
+        volume += .1f;
+        if (volume > 1f)
+            volume = 0f;
+
+        PlayerPrefs.SetFloat(PLAYER_PREFS_SFX_VOLUME, volume);
+        PlayerPrefs.Save();
+    }
+
+    public float GetVolume()
+    {
+        return volume;
     }
 }

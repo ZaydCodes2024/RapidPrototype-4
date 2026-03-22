@@ -14,10 +14,10 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        Cursor.lockState = CursorLockMode.Locked;
     }
     private void Start()
     {
+        LockCursorState();
         playerLook = GetComponent<PlayerLook>();
         playerMovement = GetComponent<PlayerMovement>();
     }
@@ -30,6 +30,14 @@ public class Player : MonoBehaviour
     public Transform GetCameraTransform()
     {
         return cameraTransform;
+    }
+    public void LockCursorState()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+    public void UnlockCursorState()
+    {
+        Cursor.lockState = CursorLockMode.None;
     }
     
 }

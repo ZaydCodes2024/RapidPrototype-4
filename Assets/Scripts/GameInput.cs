@@ -12,7 +12,10 @@ public class GameInput : MonoBehaviour
     public event EventHandler OnMouseButtonAction;
     public event EventHandler OnMouseScrollAction;
     public event EventHandler OnCrouchAction;
+    public event EventHandler OnGamePauseAction;
+    public event EventHandler OnGameUnpauseAction;
     InputActions playerInputActions;
+    private bool isGamePause = false;
     public enum Binding
     {
         Interact
@@ -26,6 +29,12 @@ public class GameInput : MonoBehaviour
         playerInputActions.Player.MouseButton.performed += MouseButton_Performed;
         playerInputActions.Player.Scroll.performed += Scroll_performed;
         playerInputActions.Player.Crouch.performed += Crouch_Performed;
+        playerInputActions.Player.Pause.performed += Pause_Performed;
+    }
+
+    private void Pause_Performed(InputAction.CallbackContext context)
+    {
+        TogglePauseGame();
     }
 
     private void OnDestroy()
@@ -34,6 +43,7 @@ public class GameInput : MonoBehaviour
         playerInputActions.Player.MouseButton.performed -= MouseButton_Performed;
         playerInputActions.Player.Scroll.performed -= Scroll_performed;
         playerInputActions.Player.Crouch.performed -= Crouch_Performed;
+        playerInputActions.Player.Pause.performed -= Pause_Performed;
         playerInputActions.Dispose();
     }
     private void Crouch_Performed(InputAction.CallbackContext context)
@@ -80,5 +90,25 @@ public class GameInput : MonoBehaviour
             case Binding.Interact:
             return playerInputActions.Player.Interact.GetBindingDisplayString(0, InputBinding.DisplayStringOptions.DontIncludeInteractions);
         }
+    }
+    public void TogglePauseGame()
+    {
+        isGamePause = !isGamePause;
+
+        if (isGamePause)
+        {
+            Time.timeScale = 0f;
+            OnGamePauseAction?.Invoke(this, EventArgs.Empty);
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            OnGameUnpauseAction?.Invoke(this, EventArgs.Empty);
+        }
+    }
+
+    public bool IsGamePaused()
+    {
+        return isGamePause;
     }
 }

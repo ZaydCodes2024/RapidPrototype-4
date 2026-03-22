@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class GameOverUI : MonoBehaviour
 {
-    [SerializeField] private Button restartButton;
     [SerializeField] private Button mainMenuButton;
     [SerializeField] private TextMeshProUGUI completionTimeText;
     private float completionTime;
@@ -14,12 +13,7 @@ public class GameOverUI : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true; 
-
-        restartButton.onClick.AddListener( () =>
-        {
-            Loader.Load(Loader.Scene.GameScene);
-        });
-
+        
         mainMenuButton.onClick.AddListener( () =>
         {
             Loader.Load(Loader.Scene.MainMenuScene);

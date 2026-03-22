@@ -25,5 +25,8 @@ Assets
 * https://mehrasaur.itch.io/3d-furnitre-pack
 * https://assetstore.unity.com/packages/2d/gui/icons/skymon-icon-pack-free-282424#description
 
+Music
+* Music by <a href="https://pixabay.com/users/freegroove-20279938/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=198357">Francesco Biondi</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=198357">Pixabay</a>
+
 
 

@@ -1,5 +1,4 @@
-# Rapid Game Prototype - 4
-# Theme - Puzzle Box
+# Theme - Puzzle
 # Modifiers - No Combat
 
 

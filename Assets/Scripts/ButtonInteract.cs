@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 public class ButtonInteract : MonoBehaviour
 {
@@ -6,7 +7,7 @@ public class ButtonInteract : MonoBehaviour
     [SerializeField] private MeshRenderer buttonRenderer;
     [SerializeField] private Material defaultMaterial;
     private Material highlightMaterial;
-
+    public event EventHandler OnButtonPressed;
     private void Awake()
     {
         buttonRenderer.material = defaultMaterial;
@@ -22,6 +23,7 @@ public class ButtonInteract : MonoBehaviour
         if (puzzle != null)
         {
             puzzle.PressButton(buttonID);
+            OnButtonPressed?.Invoke(this, EventArgs.Empty);
         }
     }
     private void OnMouseEnter()

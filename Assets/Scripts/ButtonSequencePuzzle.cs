@@ -57,12 +57,14 @@ public class ButtonSequencePuzzle : PuzzleModule
             {
                 Solve(); // Puzzle is solved when sequence is completed
                 indicatorRenderer.material = solvedMaterial;
+                SoundManager.Instance.PlayInteractSuccessSound(transform.position, 5f);
             }
         }
         else
         {
             index = 0; // Reset if wrong
             indicatorRenderer.material = failedMaterial;
+            SoundManager.Instance.PlayInteractFailedSound(transform.position, 2f);
         }
     }
     public Color GetHighlightColor()

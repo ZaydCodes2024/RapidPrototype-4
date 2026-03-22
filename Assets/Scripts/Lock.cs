@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 
 public class Lock : MonoBehaviour, IInteractable
 {
     public static Lock Instance {get; private set;}
+    public event EventHandler OnLockUnlocked;
     [SerializeField] private Key key;
     private bool isUnlocked = false;
 
@@ -20,7 +22,11 @@ public class Lock : MonoBehaviour, IInteractable
         {
             isUnlocked = true;
             InventoryManager.Instance.RemoveItem(key.GetInventoryItemSO());
+
+            OnLockUnlocked?.Invoke(this, EventArgs.Empty);
+
             LockManager.Instance.UnlockLock();
+            
             key.DestroySelf();
             gameObject.SetActive(false);
         }  

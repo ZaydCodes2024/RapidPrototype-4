@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 375cd378c14074baf8395db2fe8ce18c, type: 3}
+  m_Name: AudioClips
+  m_EditorClassIdentifier: 
+  footstep:
+  - {fileID: 8300000, guid: f85e0b49a317f4bdcafa1f0d6f20db73, type: 3}
+  - {fileID: 8300000, guid: b1114beb6eecf4e1c866f4cf2caa062c, type: 3}
+  - {fileID: 8300000, guid: c03e1ad1bac7b41bb8f0fa7f5be45f47, type: 3}
+  - {fileID: 8300000, guid: c38226a6bae6b446599bca0561161e99, type: 3}
+  interactFail:
+  - {fileID: 8300000, guid: fec00f8e9b93746a4980f439d8e80537, type: 3}
+  - {fileID: 8300000, guid: 314a0d0ced8944ed78dcaedc3b0ce8bb, type: 3}
+  crouchUp:
+  - {fileID: 8300000, guid: dd4f6956733d64f25ae4fc23de471515, type: 3}
+  - {fileID: 8300000, guid: 3f1270040e9b34bdaa11c5d409caeacd, type: 3}
+  - {fileID: 8300000, guid: be1cf83781fe74bb3bee43726638c8c2, type: 3}
+  crouchDown:
+  - {fileID: 8300000, guid: 064d4ef3f60e544a8887e5f9411639bf, type: 3}
+  - {fileID: 8300000, guid: 15618bdca56284a6dbd1727f13b38304, type: 3}
+  - {fileID: 8300000, guid: dca4f4c022e514548a1136b1c9a3facc, type: 3}
+  buttonPress:
+  - {fileID: 8300000, guid: 7666fa72fac42469f988b526763a7724, type: 3}
+  - {fileID: 8300000, guid: 2c925158abe414978809312a281f47d7, type: 3}
+  - {fileID: 8300000, guid: c9363a6aeb90e48c9871b3b514e88d0e, type: 3}
+  lockUnlock:
+  - {fileID: 8300000, guid: e3a187c68b2f947a1bc19cb6c7ee12aa, type: 3}
+  - {fileID: 8300000, guid: 2b456994075fd474998789aae69be8fd, type: 3}
+  - {fileID: 8300000, guid: c082e78ae11e545768b7bdedd5e4cf51, type: 3}
+  circuitPiecePlace: {fileID: 8300000, guid: 5d86d76ae94034adfbd5285c338294f0, type: 3}
+  interactSuccess: {fileID: 8300000, guid: 9fa157a70003442698c5b2ea304caf32, type: 3}
+  itemPickup: {fileID: 8300000, guid: 99417607fc60b497b8bf38b2dd944202, type: 3}

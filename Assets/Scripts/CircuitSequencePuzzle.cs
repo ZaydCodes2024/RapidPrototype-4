@@ -35,6 +35,7 @@ public class CircuitSequencePuzzle : PuzzleModule
             {
                 Solve();
                 indicatorRenderer.material = solvedMaterial;
+                SoundManager.Instance.PlayInteractSuccessSound(transform.position, 5f);
             }
         }
     }

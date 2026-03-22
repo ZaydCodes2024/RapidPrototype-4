@@ -65,6 +65,7 @@ public class SwitchSequencePuzzle : PuzzleModule
         {   
             Solve();
             indicatorRenderer.material = solvedMaterial;
+            SoundManager.Instance.PlayInteractSuccessSound(transform.position, 5f);
         }
     }
 }

@@ -25,6 +25,7 @@ public class InventoryManager : MonoBehaviour
             inventoryItem[item] = 1;
         }
         onItemAdded?.Invoke(this, EventArgs.Empty);
+        SoundManager.Instance.PlayItemPickupSound(transform.position, 1f);
     }
     public bool HasItem(InventoryItemSO item)
     {

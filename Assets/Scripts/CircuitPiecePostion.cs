@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class CircuitPiecePostion : MonoBehaviour
     [SerializeField] private Transform correctPosition; 
     [SerializeField] private CircuitPiece circuitPiecePrefab;
     [SerializeField] private CircuitSequencePuzzle circuitPuzzle;
+    public event EventHandler OnCircuitPiecePlace;
 
     // Snaps the piece to the correct position on the circuit
     public void SnapToCorrectPosition()
@@ -21,6 +23,8 @@ public class CircuitPiecePostion : MonoBehaviour
             circuitPiecePrefab.transform.localRotation = Quaternion.identity; 
             circuitPiecePrefab.transform.localScale = Vector3.one;
 
+            OnCircuitPiecePlace?.Invoke(this, EventArgs.Empty);
+            
             circuitPiecePrefab.gameObject.SetActive(true);
             InventoryManager.Instance.RemoveItem(circuitPiecePrefab.GetInventoryItemSO()); // Remove from inventory after placing
 

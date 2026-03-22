@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 public class Switches : MonoBehaviour
 {
+    public event EventHandler OnSwitchPress;
     private bool isOn = false;
     private Renderer switchRenderer;
     [SerializeField] private SwitchSequencePuzzle switchpuzzleManager;
@@ -19,6 +21,8 @@ public class Switches : MonoBehaviour
     {
         isOn = !isOn;
 
+        OnSwitchPress?.Invoke(this, EventArgs.Empty);
+        
         UpdateVisual();
 
         if (switchpuzzleManager != null)

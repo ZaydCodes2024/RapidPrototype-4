@@ -7,11 +7,14 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float walkSpeed;
     [SerializeField] private float runSpeed;
+    public event EventHandler OnCrouchDown;
+    public event EventHandler OnCrouchUp;
     private bool isCrouching;
     private float currentHeight;
     private float lerpSpeed = 10f;
     private float crouchHeight = 0.25f;
     private float crouchSpeed = 2.5f;
+    private bool isWalking;
     
     private void Start()
     {
@@ -20,9 +23,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void GameInput_OnCrouchAction(object sender, EventArgs e)
     {
-        // if (Inspectable.Instance != null && Inspectable.Instance.GetInspectingState())  return;
-
         isCrouching = !isCrouching;
+        IsCrouching();
     }
 
     public void HandleMovement()
@@ -88,8 +90,25 @@ public class PlayerMovement : MonoBehaviour
             transform.position += moveDir * moveDistance;
         }
 
+        isWalking = moveDir != Vector3.zero;
+
         float targetHeight = isCrouching ? crouchHeight : playerHeight;
         Player.Instance.GetCameraTransform().localPosition = Vector3.Slerp(Player.Instance.GetCameraTransform().localPosition, new Vector3(0, targetHeight, 0), Time.deltaTime * lerpSpeed);
 
+    }
+    public bool IsWalking()
+    {
+        return isWalking;
+    }
+    public void IsCrouching()
+    {
+        if (isCrouching)
+        {
+            OnCrouchDown?.Invoke(this,EventArgs.Empty);
+        }
+        else
+        {
+            OnCrouchUp?.Invoke(this, EventArgs.Empty);
+        }
     }
 }

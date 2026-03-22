@@ -11,8 +11,6 @@ public class GamePauseUI : MonoBehaviour
     [SerializeField] private Button mainMenuButton;
     private void Awake()
     {
-        Cursor.visible = true;
-
         resumeButton.onClick.AddListener( () =>
         {
            GameInput.Instance.TogglePauseGame(); 

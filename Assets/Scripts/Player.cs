@@ -34,10 +34,12 @@ public class Player : MonoBehaviour
     public void LockCursorState()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
     public void UnlockCursorState()
     {
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
     
 }

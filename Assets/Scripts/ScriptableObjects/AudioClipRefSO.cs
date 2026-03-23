@@ -14,4 +14,5 @@ public class AudioClipRefSO : ScriptableObject
     public AudioClip circuitPiecePlace;
     public AudioClip interactSuccess;
     public AudioClip itemPickup;
+    public AudioClip tvStatic;
 }

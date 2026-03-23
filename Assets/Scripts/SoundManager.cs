@@ -7,6 +7,7 @@ public class SoundManager : MonoBehaviour
 {
     [SerializeField] AudioClipRefSO audioClipRefSO;
     [SerializeField] PlayerMovement playerMovement;
+    [SerializeField] SwitchSequencePuzzle switchPuzzle;
     [SerializeField] List<ButtonInteract> buttonInteract;
     [SerializeField] List<CircuitPiecePostion> circuitPiecePostions;
     [SerializeField] List<Switches> switchesList;
@@ -23,7 +24,7 @@ public class SoundManager : MonoBehaviour
     {
         playerMovement.OnCrouchUp += PlayerMovement_OnCrouchUp;
         playerMovement.OnCrouchDown += PlayerMovement_OnCrouchDown;
-
+        switchPuzzle.OnScreenChange += SwitchPuzzle_OnScreenChange;
         foreach (ButtonInteract button in buttonInteract)
         {
             button.OnButtonPressed += ButtonInteract_OnButtonPressed;
@@ -43,6 +44,12 @@ public class SoundManager : MonoBehaviour
         {
             lockItem.OnLockUnlocked += Lock_OnLockUnlocked;
         }
+    }
+
+    private void SwitchPuzzle_OnScreenChange(object sender, System.EventArgs e)
+    {
+        switchPuzzle = sender as SwitchSequencePuzzle;
+        PlaySound(audioClipRefSO.tvStatic, switchPuzzle.GetTvTransform().position, 0.1f); 
     }
 
     private void Lock_OnLockUnlocked(object sender, System.EventArgs e)
@@ -71,14 +78,14 @@ public class SoundManager : MonoBehaviour
 
     private void PlayerMovement_OnCrouchDown(object sender, System.EventArgs e)
     {
-        PlayerMovement player = sender as PlayerMovement;
-        PlaySound(audioClipRefSO.crouchDown, player.transform.position, volume);
+        playerMovement = sender as PlayerMovement;
+        PlaySound(audioClipRefSO.crouchDown, playerMovement.transform.position, volume);
     }
 
     private void PlayerMovement_OnCrouchUp(object sender, System.EventArgs e)
     {
-        PlayerMovement player = sender as PlayerMovement;
-        PlaySound(audioClipRefSO.crouchUp, player.transform.position, volume);
+        playerMovement = sender as PlayerMovement;
+        PlaySound(audioClipRefSO.crouchUp, playerMovement.transform.position, volume);
     }
 
     private void PlaySound(AudioClip audioClip, Vector3 position, float volume = 1)

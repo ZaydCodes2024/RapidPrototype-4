@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Linq;
+using System;
 public class SwitchSequencePuzzle : PuzzleModule
 {
     [Header("Switches")]
@@ -19,6 +20,7 @@ public class SwitchSequencePuzzle : PuzzleModule
     private bool isGap;
     private bool isPlaying;
     private Material tvMaterial;
+    public event EventHandler OnScreenChange;
     private void Awake()
     {
         tvMaterial = tvScreenRenderer.material;
@@ -46,7 +48,7 @@ public class SwitchSequencePuzzle : PuzzleModule
 
         for (int i = 0; i < solutionPattern.Length; i++)
         {
-            solutionPattern[i] = Random.Range(0, emissionPalette.Length);
+            solutionPattern[i] = UnityEngine.Random.Range(0, emissionPalette.Length);
         }
         
         StartPlayback();
@@ -83,17 +85,10 @@ public class SwitchSequencePuzzle : PuzzleModule
             isGap = true;
         }
     }
-    private Color GetRandomPaletteColor()
-    {
-        if (emissionPalette.Length == 0)
-            return Color.white;
-
-        int index = Random.Range(0, emissionPalette.Length);
-        return emissionPalette[index] * emissionIntensity;
-    }
     private void SetEmission(Color color)
     {
         tvMaterial.SetColor("_EmissionColor", color);
+        OnScreenChange?.Invoke(this, EventArgs.Empty);
     }
     private void SetBaseColor(Color color)
     {
@@ -146,5 +141,10 @@ public class SwitchSequencePuzzle : PuzzleModule
         playbackTimer = 0f;
         isGap = false;
         isPlaying = true;
+    }
+
+    public Transform GetTvTransform()
+    {
+        return tvScreenRenderer.gameObject.transform;
     }
 }

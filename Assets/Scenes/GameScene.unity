@@ -4752,6 +4752,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioClipRefSO: {fileID: 11400000, guid: fa98b465a2b8c4074acaa75aa7e73ab5, type: 2}
   playerMovement: {fileID: 1601258922}
+  switchPuzzle: {fileID: 85591026}
   buttonInteract:
   - {fileID: 6108103498585863754}
   - {fileID: 8499721585359152890}

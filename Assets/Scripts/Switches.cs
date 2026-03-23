@@ -4,22 +4,30 @@ using UnityEngine;
 public class Switches : MonoBehaviour
 {
     public event EventHandler OnSwitchPress;
-    private bool isOn = false;
+    private int currentColorIndex = -1;
     private Renderer switchRenderer;
     [SerializeField] private SwitchSequencePuzzle switchpuzzleManager;
 
     [Header("Feedback Materials")]
-    [SerializeField] private Material onMaterial;
-    [SerializeField] private Material offMaterial;
-    // Toggle the state of the switch
+    private Material switchMaterial;
+    [SerializeField] private Color[] emissionPalette;
+    [SerializeField] private float emissionIntensity;
     private void Awake()
     {
         switchRenderer = GetComponent<Renderer>();
+        switchMaterial = switchRenderer.material;
+        switchMaterial.EnableKeyword("_EMISSION");
+        currentColorIndex = -1;
         UpdateVisual();
     }
     public void ToggleState()
     {
-        isOn = !isOn;
+        if (emissionPalette == null || emissionPalette.Length == 0)     return;
+
+        currentColorIndex++;
+
+        if (currentColorIndex >= emissionPalette.Length)
+            currentColorIndex = -1;
 
         OnSwitchPress?.Invoke(this, EventArgs.Empty);
         
@@ -32,21 +40,45 @@ public class Switches : MonoBehaviour
     }
 
     // Get the current state of the switch
-    public bool GetState()
+    public int GetColorIndex()
     {
-        return isOn;
+        return currentColorIndex;
     }
-
-    public void SetState(bool state)
+    public void SetColorIndex(int index)
     {
-        isOn = state;
+        currentColorIndex = index;
         UpdateVisual();
     }
     private void UpdateVisual()
     {
-        if (switchRenderer != null)
+        if (switchRenderer == null) return;
+
+        if (currentColorIndex == -1)
         {
-            switchRenderer.material = isOn ? onMaterial : offMaterial;
+            switchMaterial.SetColor("_EmissionColor", Color.black);
         }
+        else
+        {
+            Color baseColor = emissionPalette[currentColorIndex];
+            Color emissionColor = GetEmissionColor(baseColor, emissionIntensity);
+            switchMaterial.SetColor("_Color", baseColor);  
+            switchMaterial.SetColor("_EmissionColor", emissionColor);
+        }
+    }
+    private void OnDestroy()
+    {
+        if (switchMaterial != null)
+            Destroy(switchMaterial);
+    }
+    private Color GetEmissionColor(Color baseColor, float intensity)
+    {
+        // Convert RGB to HSV
+        Color.RGBToHSV(baseColor, out float h, out float s, out float v);
+
+        // Increase value (brightness) without affecting hue or saturation
+        v = Mathf.Clamp01(v * intensity);
+
+        // Convert back to RGB
+        return Color.HSVToRGB(h, s, v);
     }
 }

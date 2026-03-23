@@ -557,11 +557,19 @@ MonoBehaviour:
   indicatorLight: {fileID: 6825731155665688329}
   solvedMaterial: {fileID: 2100000, guid: b603694cb6674486faf9328e7556266d, type: 2}
   tvScreenRenderer: {fileID: 135199873}
-  onMaterial: {fileID: 2100000, guid: 758af0543f2114f1aa8e3e94912f311c, type: 2}
-  offMaterial: {fileID: 2100000, guid: b3f5158da92cd46e89b565bfcdfe8bbb, type: 2}
-  defaultMaterial: {fileID: 2100000, guid: be96c684d83f0467c8ac8ae55dd4ec9d, type: 2}
+  emissionPalette:
+  - {r: 1, g: 0.8543689, b: 0, a: 1}
+  - {r: 0.60828316, g: 0.1527234, b: 0.9811321, a: 1}
+  - {r: 0, g: 1, b: 0.38785052, a: 1}
+  - {r: 1, g: 0.48117158, b: 0, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0.6897316, a: 1}
+  - {r: 0.002501011, g: 0, b: 1, a: 1}
+  - {r: 0.2735849, g: 0.26197046, b: 0.26197046, a: 1}
+  - {r: 0.20754719, g: 0.100195184, b: 0, a: 1}
+  emissionIntensity: 0.4
   onDuration: 0.6
-  offDuration: 0.3
   gapDuration: 0.4
 --- !u!4 &85591027
 Transform:
@@ -10885,7 +10893,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: ea61829414fc34b89ae45c9e6566a3b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11937,7 +11945,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: ea61829414fc34b89ae45c9e6566a3b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -12628,7 +12636,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: ea61829414fc34b89ae45c9e6566a3b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -12741,8 +12749,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   switchpuzzleManager: {fileID: 85591026}
-  onMaterial: {fileID: 2100000, guid: 758af0543f2114f1aa8e3e94912f311c, type: 2}
-  offMaterial: {fileID: 2100000, guid: b3f5158da92cd46e89b565bfcdfe8bbb, type: 2}
+  emissionPalette:
+  - {r: 1, g: 0.8543689, b: 0, a: 1}
+  - {r: 0.60828316, g: 0.1527234, b: 0.9811321, a: 1}
+  - {r: 0, g: 1, b: 0.38785052, a: 1}
+  - {r: 1, g: 0.48117158, b: 0, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0.6897316, a: 1}
+  - {r: 0.002501011, g: 0, b: 1, a: 1}
+  - {r: 0.2735849, g: 0.26197046, b: 0.26197046, a: 1}
+  - {r: 0.20754719, g: 0.100195184, b: 0, a: 1}
+  emissionIntensity: 0.4
 --- !u!23 &4448719134927284362
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -12979,7 +12997,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: ea61829414fc34b89ae45c9e6566a3b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13294,7 +13312,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: ea61829414fc34b89ae45c9e6566a3b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13370,8 +13388,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   switchpuzzleManager: {fileID: 85591026}
-  onMaterial: {fileID: 2100000, guid: 758af0543f2114f1aa8e3e94912f311c, type: 2}
-  offMaterial: {fileID: 2100000, guid: b3f5158da92cd46e89b565bfcdfe8bbb, type: 2}
+  emissionPalette:
+  - {r: 1, g: 0.8543689, b: 0, a: 1}
+  - {r: 0.60828316, g: 0.1527234, b: 0.9811321, a: 1}
+  - {r: 0, g: 1, b: 0.38785052, a: 1}
+  - {r: 1, g: 0.48117158, b: 0, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0.6897316, a: 1}
+  - {r: 0.002501011, g: 0, b: 1, a: 1}
+  - {r: 0.2735849, g: 0.26197046, b: 0.26197046, a: 1}
+  - {r: 0.20754719, g: 0.100195184, b: 0, a: 1}
+  emissionIntensity: 0.4
 --- !u!4 &5561988027915285814 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7165172232335439749, guid: 01071b81c69b34c2cacfac244fe7eb9a,
@@ -14061,8 +14089,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   switchpuzzleManager: {fileID: 85591026}
-  onMaterial: {fileID: 2100000, guid: 758af0543f2114f1aa8e3e94912f311c, type: 2}
-  offMaterial: {fileID: 2100000, guid: b3f5158da92cd46e89b565bfcdfe8bbb, type: 2}
+  emissionPalette:
+  - {r: 1, g: 0.8543689, b: 0, a: 1}
+  - {r: 0.60828316, g: 0.1527234, b: 0.9811321, a: 1}
+  - {r: 0, g: 1, b: 0.38785052, a: 1}
+  - {r: 1, g: 0.48117158, b: 0, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0.6897316, a: 1}
+  - {r: 0.002501011, g: 0, b: 1, a: 1}
+  - {r: 0.2735849, g: 0.26197046, b: 0.26197046, a: 1}
+  - {r: 0.20754719, g: 0.100195184, b: 0, a: 1}
+  emissionIntensity: 0.4
 --- !u!33 &6367858757871881546
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -14166,7 +14204,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: ea61829414fc34b89ae45c9e6566a3b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14244,7 +14282,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: ea61829414fc34b89ae45c9e6566a3b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14300,8 +14338,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   switchpuzzleManager: {fileID: 85591026}
-  onMaterial: {fileID: 2100000, guid: 758af0543f2114f1aa8e3e94912f311c, type: 2}
-  offMaterial: {fileID: 2100000, guid: b3f5158da92cd46e89b565bfcdfe8bbb, type: 2}
+  emissionPalette:
+  - {r: 1, g: 0.8543689, b: 0, a: 1}
+  - {r: 0.60828316, g: 0.1527234, b: 0.9811321, a: 1}
+  - {r: 0, g: 1, b: 0.38785052, a: 1}
+  - {r: 1, g: 0.48117158, b: 0, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0.6897316, a: 1}
+  - {r: 0.002501011, g: 0, b: 1, a: 1}
+  - {r: 0.2735849, g: 0.26197046, b: 0.26197046, a: 1}
+  - {r: 0.20754719, g: 0.100195184, b: 0, a: 1}
+  emissionIntensity: 0.4
 --- !u!33 &6628348567414954461
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -14344,8 +14392,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   switchpuzzleManager: {fileID: 85591026}
-  onMaterial: {fileID: 2100000, guid: 758af0543f2114f1aa8e3e94912f311c, type: 2}
-  offMaterial: {fileID: 2100000, guid: b3f5158da92cd46e89b565bfcdfe8bbb, type: 2}
+  emissionPalette:
+  - {r: 1, g: 0.8543689, b: 0, a: 1}
+  - {r: 0.60828316, g: 0.1527234, b: 0.9811321, a: 1}
+  - {r: 0, g: 1, b: 0.38785052, a: 1}
+  - {r: 1, g: 0.48117158, b: 0, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0.6897316, a: 1}
+  - {r: 0.002501011, g: 0, b: 1, a: 1}
+  - {r: 0.2735849, g: 0.26197046, b: 0.26197046, a: 1}
+  - {r: 0.20754719, g: 0.100195184, b: 0, a: 1}
+  emissionIntensity: 0.4
 --- !u!1 &6758570033543632579
 GameObject:
   m_ObjectHideFlags: 0
@@ -14596,7 +14654,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: ea61829414fc34b89ae45c9e6566a3b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14747,8 +14805,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   switchpuzzleManager: {fileID: 85591026}
-  onMaterial: {fileID: 2100000, guid: 758af0543f2114f1aa8e3e94912f311c, type: 2}
-  offMaterial: {fileID: 2100000, guid: b3f5158da92cd46e89b565bfcdfe8bbb, type: 2}
+  emissionPalette:
+  - {r: 1, g: 0.8543689, b: 0, a: 1}
+  - {r: 0.60828316, g: 0.1527234, b: 0.9811321, a: 1}
+  - {r: 0, g: 1, b: 0.38785052, a: 1}
+  - {r: 1, g: 0.48117158, b: 0, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0.6897316, a: 1}
+  - {r: 0.002501011, g: 0, b: 1, a: 1}
+  - {r: 0.2735849, g: 0.26197046, b: 0.26197046, a: 1}
+  - {r: 0.20754719, g: 0.100195184, b: 0, a: 1}
+  emissionIntensity: 0.4
 --- !u!4 &7070605884348399228
 Transform:
   m_ObjectHideFlags: 0
@@ -14939,8 +15007,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   switchpuzzleManager: {fileID: 85591026}
-  onMaterial: {fileID: 2100000, guid: 758af0543f2114f1aa8e3e94912f311c, type: 2}
-  offMaterial: {fileID: 2100000, guid: b3f5158da92cd46e89b565bfcdfe8bbb, type: 2}
+  emissionPalette:
+  - {r: 1, g: 0.8543689, b: 0, a: 1}
+  - {r: 0.60828316, g: 0.1527234, b: 0.9811321, a: 1}
+  - {r: 0, g: 1, b: 0.38785052, a: 1}
+  - {r: 1, g: 0.48117158, b: 0, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0.6897316, a: 1}
+  - {r: 0.002501011, g: 0, b: 1, a: 1}
+  - {r: 0.2735849, g: 0.26197046, b: 0.26197046, a: 1}
+  - {r: 0.20754719, g: 0.100195184, b: 0, a: 1}
+  emissionIntensity: 0.4
 --- !u!33 &7918268300160059726
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -15288,7 +15366,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: ea61829414fc34b89ae45c9e6566a3b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15344,8 +15422,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   switchpuzzleManager: {fileID: 85591026}
-  onMaterial: {fileID: 2100000, guid: 758af0543f2114f1aa8e3e94912f311c, type: 2}
-  offMaterial: {fileID: 2100000, guid: b3f5158da92cd46e89b565bfcdfe8bbb, type: 2}
+  emissionPalette:
+  - {r: 1, g: 0.8543689, b: 0, a: 1}
+  - {r: 0.60828316, g: 0.1527234, b: 0.9811321, a: 1}
+  - {r: 0, g: 1, b: 0.38785052, a: 1}
+  - {r: 1, g: 0.48117158, b: 0, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0.6897316, a: 1}
+  - {r: 0.002501011, g: 0, b: 1, a: 1}
+  - {r: 0.2735849, g: 0.26197046, b: 0.26197046, a: 1}
+  - {r: 0.20754719, g: 0.100195184, b: 0, a: 1}
+  emissionIntensity: 0.4
 --- !u!4 &8312084619434192126
 Transform:
   m_ObjectHideFlags: 0
@@ -15875,8 +15963,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   switchpuzzleManager: {fileID: 85591026}
-  onMaterial: {fileID: 2100000, guid: 758af0543f2114f1aa8e3e94912f311c, type: 2}
-  offMaterial: {fileID: 2100000, guid: b3f5158da92cd46e89b565bfcdfe8bbb, type: 2}
+  emissionPalette:
+  - {r: 1, g: 0.8543689, b: 0, a: 1}
+  - {r: 0.60828316, g: 0.1527234, b: 0.9811321, a: 1}
+  - {r: 0, g: 1, b: 0.38785052, a: 1}
+  - {r: 1, g: 0.48117158, b: 0, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0.6897316, a: 1}
+  - {r: 0.002501011, g: 0, b: 1, a: 1}
+  - {r: 0.2735849, g: 0.26197046, b: 0.26197046, a: 1}
+  - {r: 0.20754719, g: 0.100195184, b: 0, a: 1}
+  emissionIntensity: 0.4
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

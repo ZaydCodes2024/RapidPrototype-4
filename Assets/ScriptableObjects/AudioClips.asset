@@ -39,3 +39,4 @@ MonoBehaviour:
   circuitPiecePlace: {fileID: 8300000, guid: 5d86d76ae94034adfbd5285c338294f0, type: 3}
   interactSuccess: {fileID: 8300000, guid: 9fa157a70003442698c5b2ea304caf32, type: 3}
   itemPickup: {fileID: 8300000, guid: 99417607fc60b497b8bf38b2dd944202, type: 3}
+  tvStatic: {fileID: 8300000, guid: 0cf600f69217a42d1a8a2c63fb7238ae, type: 3}

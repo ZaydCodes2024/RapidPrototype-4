@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     private float waitingToStartTimer = 1f;
     private float gameOverTimer = 3f;
     private float completionTime;
+    private bool isGameWin;
     private enum State
     {
         WaitingToStart, GamePlaying, GameOver
@@ -40,6 +41,7 @@ public class GameManager : MonoBehaviour
         if (solvedPuzzles >= puzzleModules.Length)
         {
             state = State.GameOver;
+            isGameWin = true;
         }
     }
 
@@ -88,11 +90,15 @@ public class GameManager : MonoBehaviour
     {
         return state == State.GamePlaying;
     }
+    public bool IsGameWin()
+    {
+        return isGameWin;
+    }
     private void CompleteGame()
     {
         gameOverTimer -= Time.deltaTime;
 
-        if (gameOverTimer <= 0)
-            Loader.Load(Loader.Scene.GameOverScene);
+        if (gameOverTimer <= 0)     Loader.Load(Loader.Scene.GameOverScene);
+        
     }
 }

@@ -1,10 +1,6 @@
 # Theme - Puzzle
 # Modifiers - No Combat
 
-
-
-## Game that combines Keep talking and Nobody explodes and Escape Rooms.
-
 Puzzle Boxed
 
 Game Idea

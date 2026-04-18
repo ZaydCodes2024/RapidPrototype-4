@@ -1,7 +1,7 @@
 # Theme - Puzzle
 # Modifiers - No Combat
 
-Puzzle Boxed
+Puzzle Boxed - https://zayd-game-dev.itch.io/puzzle-boxed 
 
 Game Idea
 * Game like Keep talking and Nobody explodes - Interacting with a box
